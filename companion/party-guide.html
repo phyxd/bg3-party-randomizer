@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhaal Till You Fall - Party Guide</title>
+<style>
+:root{
+  --bg:#120d08; --panel:#221a10; --panel2:#2b2114; --ink:#f2e8d2; --muted:#b3a585;
+  --gold:#e8c265; --blood:#7a3320; --line:#4a3a1e; --good:#7fc24a; --warn:#e0a82e; --bad:#d8453f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1200px 620px at 50% -10%,#2a1f10 0%,var(--bg) 60%) fixed,var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.55;padding:0 0 90px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+a{color:var(--gold)}
+header.hero{background:linear-gradient(170deg,#3a2912 0%,#1b1409 55%,#120d08 100%);border-bottom:2px solid #6a531f;padding:50px 0 34px;text-align:center}
+.hero h1{font-size:2.2rem;letter-spacing:.05em;color:var(--gold);text-transform:uppercase;line-height:1.15}
+.hero .sub{color:var(--muted);font-style:italic;margin-top:10px;max-width:760px;margin-left:auto;margin-right:auto}
+.hero .meta{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--panel);padding:6px 14px;border-radius:999px;font-family:Verdana,sans-serif;font-size:.72rem}
+.chip b{color:var(--gold)}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,15,12,.96);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 20px;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-family:Verdana,sans-serif;font-size:.72rem;padding:6px 12px;border-radius:6px;white-space:nowrap}
+nav a:hover{color:var(--gold);background:var(--panel2)}
+.navtoggle{color:var(--gold);cursor:pointer;font-family:Verdana,sans-serif;font-size:.7rem;padding:6px 12px;border:1px solid var(--gold);border-radius:6px;white-space:nowrap;margin-left:auto;background:none}
+.navtoggle:hover{background:var(--panel2)}
+main{padding-top:8px}
+details.char{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin:16px 0;overflow:hidden}
+details.char[open]{border-color:#6a531f}
+details.char>summary{cursor:pointer;list-style:none;padding:18px 22px;display:flex;flex-direction:column;gap:4px}
+details.char>summary::-webkit-details-marker{display:none}
+details.char>summary:hover{background:var(--panel2)}
+summary .role{font-family:Verdana,sans-serif;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+summary .name{font-size:1.35rem;color:var(--gold)}
+summary .sub2{color:var(--ink);font-size:.95rem;font-style:italic}
+summary .hint{font-family:Verdana,sans-serif;font-size:.62rem;color:var(--muted);letter-spacing:.06em}
+.body{padding:4px 24px 26px;border-top:1px solid var(--line)}
+.body h1{display:none}
+.body h2{color:var(--gold);font-size:1.15rem;margin:22px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.body h3{color:var(--gold);font-size:1rem;margin:18px 0 8px}
+.body h4{color:var(--muted);font-family:Verdana,sans-serif;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;margin:14px 0 6px}
+.body p{margin:9px 0}
+.body ul.md,.body ol.md{margin:8px 0 8px 22px}
+.body li{margin-bottom:6px}
+.body strong{color:#f7eccf}
+.body em{color:var(--muted)}
+.body code{background:#0e0a06;border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-family:Consolas,monospace;font-size:.85em;color:var(--gold)}
+.body hr{border:none;border-top:1px solid var(--line);margin:18px 0}
+blockquote{border-left:4px solid var(--gold);background:var(--panel2);padding:10px 16px;border-radius:0 10px 10px 0;margin:12px 0}
+blockquote p{margin:6px 0}
+.tablewrap{overflow-x:auto;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:Verdana,sans-serif;font-size:.64rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+td.lv{color:var(--gold);font-weight:bold;white-space:nowrap}
+footer{margin-top:50px;text-align:center;color:var(--muted);font-size:.8rem;font-style:italic}
+html{scroll-behavior:smooth}
+/* always-open flat sections: The Run, Party Engine */
+section.run-section,section.engine-section{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin:16px 0;padding:6px 24px 22px}
+section.run-section .section-title,section.engine-section .section-title{color:var(--gold);font-size:1.3rem;margin:16px 0 10px;letter-spacing:.03em}
+@media (max-width:600px){ .hero h1{font-size:1.6rem} summary .name{font-size:1.1rem} }
+@media print{ body{background:#fff;color:#000} details.char,section.run-section,section.engine-section{border-color:#ccc;background:#fff;break-inside:avoid} nav{display:none} details.char>.body{display:block!important} }
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap"><h1>&#128128; Bhaal Till You Fall &mdash; Party Guide</h1><div class="sub">The Run, all four seats’ full per-level 1&rarr;20 breakdown, and the Party Engine &mdash; assembled straight from the canonical markdown, nothing invented.</div><div class="meta"><span class="chip"><b>Party:</b> 4-seat Honour Mode evil route</span><span class="chip"><b>Run:</b> Bhaal Till You Fall</span><span class="chip"><b>Verified:</b> bg3.wiki + AMP Guidebook</span></div></div></header>
+<nav><div class="wrap"><a href="#the-run">The Run</a><a href="#durge">💀 DURGE</a><a href="#minthara">🕷️ MINTHARA</a><a href="#shadowheart">🐍 SHADOWHEART</a><a href="#laezel">⚔️ LAE'ZEL</a><a href="#party-engine">Party Engine</a><button class="navtoggle" id="toggleAll">Expand all</button></div></nav>
+<div class="wrap"><main>
+<section class="run-section" id="the-run">
+<h2 class="section-title">The Run</h2>
+<div class="body">
+<h1>🩸 BHAAL TILL YOU FALL — Run Charter</h1>
+<h2>Embrace-Durge · Honour Mode · 4 seats · AMP · evil route</h2>
+<p><em>Run 2 of this project. Party locked 2026-08-16. The Kill Line (Run 1, <code>Builds/</code>) is untouched and stays valid for its own save.</em></p>
+<hr />
+<h2>1. The run, in one breath</h2>
+<ul class="md">
+<li><strong>Who:</strong> The Dark Urge (<strong>embraced</strong>), <strong>Minthara</strong>, <strong>Shadowheart</strong> (Shar path), <strong>Lae'zel</strong>. Four seats, no bench.</li>
+<li><strong>Mode:</strong> <strong>Honour Mode</strong>, played legit. Single save, permadeath on wipe, bosses get Legendary Actions (bg3.wiki: Honour Mode).</li>
+<li><strong>Loot:</strong> <strong>Ancient Mega Pack (AMP)</strong> on <strong>Casual</strong>, with <strong>AMP merchant takeover disabled</strong> — see §5b. Randomized base-game loot, but merchants restock on rest and other mods' items stay on their shelves. See <code>Mod KB/01 - Ancient Mega Pack.md</code> and the AMP Guidebook.</li>
+<li><strong>Difficulty knob:</strong> <strong>Tactician Enhanced</strong> (PixellBytes) tuned to taste + <strong>Extra Encounters and Minibosses</strong>. Nightmare and "More enemies in basic fights" stay <strong>OFF</strong>.</li>
+<li><strong>Level cap:</strong> UnlockLevelCurve to 20 on the <strong>normal</strong> curve (the stray fast-XP mod is being removed by Tyler). Guides go 1–20 but expect to finish around 14–16.</li>
+<li><strong>Vibe:</strong> evil, scary, fun. Builds are random-but-optimized. <strong>Zero rerolls.</strong></li>
+</ul>
+<hr />
+<h2>2. Party selection — how the seats were chosen</h2>
+<ol class="md">
+<li>Two whole parties were rolled by <code>Multiclass Vault/tools/roll-run.js</code> from the 202-build honour-viable pool (seeded, reproducible).</li>
+<li><strong>Party A = blind</strong> (any build per companion; Durge limited to evil-flavoured chassis). Seed <code>bhaal-A</code>.</li>
+<li><strong>Party B = curated</strong> (evil/synergy shortlists per seat). Seed <code>bhaal-B</code>.</li>
+<li>Hard constraints on both: no Pactbound (mutually exclusive with Dread Overlord), no duplicate build or primary class, max one Summoner seat, at least one seat with Healing Word / Revivify access.</li>
+<li>After Tyler rejected the Blood Mage class outright and asked for real synergy, the tool gained a <strong>synergy sampler</strong>: it samples 400 valid parties, scores each seat against the other three (role gap, heal/revive, Aura of Protection, Aura of Hate feeding party undead, CC feeding a Sneak-Attack seat, un-resisted damage, evil theme; second summoner banned, four concentration seats penalised) and rolls one party from the top tier. Three were offered.</li>
+<li><strong>LOCKED: Party S3</strong> (<code>--mode synergy --seed bhaal-S3 --race-seed reroll-1</code>). Durge = <strong>Oathbreaker Paladin 13 / Battle Master Fighter 7</strong> (<strong>Duergar</strong> — player override of the rolled Half-Orc, 2026-08-16), Minthara = <strong>Shadow Magic Sorcerer 14 / Vengeance Paladin 6</strong>, Shadowheart = <strong>Enchantment Wizard 20</strong>, Lae'zel = <strong>Eldritch Knight Fighter 16 / Hexblade Warlock 4</strong>. Zero summoner seats, two paladin auras, no rerolls from here. Full results: <code>_LOCKED ROLLS.md</code>. <strong>Amended 2026-08-16 (evening):</strong> Minthara's oath changed <strong>Vengeance -&gt; Oath of Conquest</strong> (mod). The roll is untouched - the class and level split are exactly as rolled; only the oath moved, because bg3.wiki lists revealing the Grove to Minthara as a Vengeance oath-break and this run does that by design. Reasoning in her build file.</li>
+</ol>
+<hr />
+<h2>3. House rules for THIS run (differences from Run 1)</h2>
+<ul class="md">
+<li><strong>No unlimited-elixir assumption.</strong> CONVENTIONS rule #14 (dump STR, drink Cloud Giant) is <strong>OFF</strong> here. Every stat line is the real 27-point buy the randomizer prints. Elixirs are a bonus when found, never a plan.</li>
+<li><strong>No cheater gear.</strong> The "Dark Urge - Slayer Equipments and Spells" mod's placed gear is banned (its author calls the amulet/ring intentionally overtuned; <code>Mod KB/06</code>). The <strong>story-granted Slayer form is allowed</strong> — that is the reward for being awful.</li>
+<li><strong>Summons allowed</strong> (max one dedicated summoner seat, everyone else 0–1 pet) so turns stay fast. <em>(The locked party S3 has zero summoner seats; Durge's Animate Dead and the optional Better Oathbreaker Summons are his own, and Aura of Hate buffs them.)</em></li>
+<li><strong>Full Withers respec</strong> for companions to whatever rolled.</li>
+<li><strong>Durge race rolled</strong> from an evil-flavoured shortlist; companions keep canon races. BG3 racial ASIs are floating, and BG3 has no multiclass ability-score gate.</li>
+<li><strong>Everything else</strong> in <code>BUILD &amp; GUIDE CONVENTIONS (read me first).md</code> still applies (never fabricate, one row per level, Honour rules, HTML deliverables, never delete content).</li>
+</ul>
+<hr />
+<h2>4. Honour Mode — the rules that shape the builds (bg3.wiki: Honour Mode, Extra Attack, Undocumented Patch 5 updates)</h2>
+<ol class="md">
+<li><strong>One save file.</strong> Party wipe = the run ends (or you continue in Custom mode with Honour lost).</li>
+<li><strong>Legendary Actions</strong> on ~30 boss fights: bosses act at the end of other creatures' turns. Plan for the boss to punish you between turns.</li>
+<li><strong>Extra Attack never stacks across classes</strong> (any difficulty). In Honour, <strong>Pact of the Blade also does not stack</strong> with Extra Attack, and the extra action from <strong>Haste / Bloodlust does not get Extra Attack</strong>. <strong>Action Surge still does.</strong></li>
+<li><strong>Damage Rider Source removed</strong> from Tavern Brawler and a list of items (Phalar Aluve Shriek and others). Don't plan around rider stacking.</li>
+<li><strong>Restoration pods</strong> work once. <strong>Mods on = no achievements</strong> (Honour still runs; the golden dice / Foehammer will not unlock).</li>
+<li><strong>Multiclass rules:</strong> BG3 has no ability-score prerequisites. Use 27-point buy and verify any installed mod restrictions at the level-up screen.</li>
+</ol>
+<hr />
+<h2>5. Difficulty config — Tactician Enhanced + Extra Encounters</h2>
+<p><strong>What is verified (mod.io / Nexus description):</strong> Tactician Enhanced "allows you to give enemies additional hitpoints, actions, and bonus actions," can "have those buffs automatically increase as more characters join your party," every setting is configurable <strong>in-game</strong> without reloading, needs no Script Extender, and is purely additive. Players run it in Honour Mode (forum reports). Exact in-game setting names, ranges and defaults could <strong>not</strong> be read from the mod page — read them off the in-game menu; nothing below invents a name.</p>
+<p><strong>Extra Encounters and Minibosses:</strong> 15 minibosses + 30 extra encounters (Acts 1–2, Act 3 in progress), console-compatible (no Script Extender). No official Honour statement; anecdotally played in Honour.</p>
+<p><strong>Prescribed starting config (a 4-seat party is the mod's baseline, so party-size scaling barely matters here):</strong></p>
+<ol class="md">
+<li><strong>Enemy extra HP: modest</strong> (the lowest non-zero step the menu offers). AMP already makes Act 2 brutal for four; start gentle.</li>
+<li><strong>Enemy extra actions: OFF.</strong></li>
+<li><strong>Enemy extra bonus actions: OFF.</strong></li>
+<li><strong>Party-size scaling: ON</strong> if offered (it does nothing at 4 seats but future-proofs the save if you ever add a fifth).</li>
+<li><strong>Extra Encounters and Minibosses: ON</strong> from the start (it is content, not a stat knob).</li>
+</ol>
+<p><strong>Escalation ladder (turn ONE knob per step; play at least one act between steps):</strong></p>
+<ol class="md">
+<li>Raise enemy HP one step.</li>
+<li>Enemy <strong>bonus actions +1</strong>.</li>
+<li>Enemy <strong>actions +1</strong> (this is the big one; Honour bosses already have Legendary Actions — expect double-turn spikes).</li>
+<li>Only after that: consider "More enemies in basic fights" (Mod KB flags not to stack it on a first run).</li>
+</ol>
+<hr />
+<h2>5b. AMP mode: Casual + merchant takeover OFF (Tyler's call, 2026-08-16)</h2>
+<p><strong>These are two separate switches, both set at campaign start (mode is changeable later at the Training Ring):</strong></p>
+<ol class="md">
+<li><strong>Difficulty mode = Casual.</strong> Per <code>Mod KB/01</code>: abundant Void capsules, <strong>unlocked chests</strong>, <strong>merchant restock on rest</strong>, all adamantine moulds, and <strong>the Pyre escalation is off</strong>.</li>
+<li><strong>Merchant takeover = DISABLED.</strong> This is the toggle that keeps <strong>other mods' items on merchants</strong> (Fade's packs, mod equipment vendors) instead of AMP replacing every shelf. The Mod KB already recommends this for a PS5 load order, because ParaTool cannot run on console and third-party items never enter AMP's random pool anyway.</li>
+</ol>
+<p><strong>What this changes for the run:</strong></p>
+<ul class="md">
+<li><strong>Gold is now a real acquisition path.</strong> Merchants restock on long rest, so shopping is no longer a one-shot. Sell aggressively, buy deliberately, and <strong>buy before you rest</strong> so you see the new stock next cycle.</li>
+<li><strong>The gear-agnostic rule relaxes, it does not vanish.</strong> Base-game named items are still randomized away by REL; but if a merchant is carrying something a seat wants, you can now go back for it instead of praying to a chest.</li>
+<li><strong>Do NOT blind-sell uniques</strong> — they are Astral Disintegrator dust fodder (2 uniques of the same rarity per disenchant, 4 dust → 1 of the next tier).</li>
+<li><strong>Difficulty must move up to compensate.</strong> Casual plus a 4-seat party plus Honour is softer than the charter's original assumption, so the Tactician Enhanced starting config in §5 is revised below.</li>
+</ul>
+<p><strong>Revised Tactician Enhanced start (replaces the "modest / OFF / OFF" opening in §5):</strong></p>
+<ol class="md">
+<li><strong>Enemy extra HP: two steps up</strong> from zero, not one.</li>
+<li><strong>Enemy extra bonus actions: +1 ON from the start.</strong></li>
+<li><strong>Enemy extra actions: still OFF</strong> — Honour bosses already have Legendary Actions, and this is the knob that creates unwinnable spikes.</li>
+<li><strong>Extra Encounters and Minibosses: ON.</strong></li>
+<li><strong>If Act 1 still feels flat by the Grove raid:</strong> raise HP another step, then turn enemy actions +1 on for the first time. Escalate one knob at a time and play at least one act between steps.</li>
+</ol>
+<hr />
+<h2>6. Mod facts that constrain the roll</h2>
+<ul class="md">
+<li><strong>Dread Overlord ⊕ Pactbound:</strong> mutually exclusive warlock mods; this run keeps <strong>Dread Overlord</strong>, Pactbound stays off (<code>Mod KB/00</code>, "MUTUALLY EXCLUSIVE").</li>
+<li><strong>AMP on PS5:</strong> the REL Generator Tool cannot run, so other mods' placed items are deterministic and only base-game named items are randomized away. Resistance-pierce shards likely broken on the PS5 build — design around <strong>un-resisted</strong> damage.</li>
+<li><strong>Enchantable AMP slots:</strong> weapons, shields, amulets, rings, monk wrappings. <strong>Armour cannot be Astrum-laddered.</strong></li>
+</ul>
+<hr />
+<h2>7. Story beats that touch the party (evil route)</h2>
+<ul class="md">
+<li><strong>Act 1:</strong> Side with the goblins, raid the Grove → <strong>Minthara recruits</strong> (she must survive the raid). Lae'zel is with you from the Nautiloid; Shadowheart from the Nautiloid/beach.</li>
+<li><strong>Act 2:</strong> <strong>Shadowheart keeps Shar</strong> at the Gauntlet (Dark Justiciar). Durge embraces the Urge (Sceleritas quests). Killing Isobel / Last Light is on-theme; note it removes vendors you may want for AMP crafting — decide per run.</li>
+<li><strong>Act 3:</strong> Durge embraces fully (Bhaal's chosen). Story-granted Slayer form allowed. Orin is a Legendary-Action boss.</li>
+</ul>
+<hr />
+<h2>8. Files in this folder</h2>
+<ul class="md">
+<li><code>_LOCKED ROLLS.md</code>, <code>_roll-A/B/S1/S2/S3.json</code> — every rolled party (seeded, reproducible). S3 is the locked one.</li>
+<li><code>01–04 - &lt;HERO&gt; …md</code> — the four build guides (written 2026-08-16). Canonical source; the <code>.html</code> master page is the deliverable.</li>
+<li><code>_PARTY ENGINE.md</code> — the synergy engine: win condition, three layers, turn rotation, panic buttons, verify-in-game list.</li>
+<li><code>tools/build-guide.py</code> — rebuilds the party guide HTML from the markdown (run it after any build edit).</li>
+<li><code>Bhaal Till You Fall - Party Guide.html</code> — master page (cards + party synergy). <strong>The deliverable.</strong></li>
+<li><code>Bhaal Till You Fall Companion.html</code> — phone companion (levels, spells, loot intake, pivot ledger, export).</li>
+<li><code>_PIVOT PROTOCOL.md</code> + <code>Item Pivot Ledger.md</code> — how AMP drops flow back into the builds, and the running log.</li>
+</ul>
+<h2>Build log</h2>
+<ul class="md">
+<li>
+<p><strong>2026-08-16 (evening):</strong> mod list changed by Tyler: <strong>added</strong> Oath of Conquest (Havsglimt), Unholy Smite, Aura of Hate Fix for Oathbreakers, Mystra's Spells, Tasha's Cauldron of Everything (spells); <strong>removed</strong> most cheat mods. <strong>Oathbreaker confirmed available at Paladin 1.</strong> Party calls that follow: Durge stays Oathbreaker (Conquest's payoffs sit at Paladin 15/20, unreachable at 13); Minthara moves Vengeance -&gt; Conquest (oath survivability on an evil route). Astarion holds Minthara's seat until the grove is raided; stand-in instructions are in her build file. Unholy Smite's numbers are <strong>unverified</strong> - check the tooltip before planning a turn around it.</p>
+</li>
+<li>
+<p><strong>2026-08-15:</strong> charter written. Honour rules from bg3.wiki (Honour Mode / Extra Attack / Undocumented Patch 5 updates). Tactician Enhanced facts from mod.io + Nexus description snippets; setting names left unverified on purpose. Roll script <code>tools/roll-run.js</code> written by Codex (Sol) from a brief, patched + validated by Claude (deterministic, constraints hold).</p>
+</li>
+</ul>
+</div>
+</section>
+
+<details class="char" id="durge">
+<summary>
+<span class="role">Role: The Tyrant (fear-lock anchor + smite cashier)</span>
+<span class="name">💀 DURGE — "Fear Itself"</span>
+<span class="sub2">Oathbreaker Paladin 13 / Battle Master Fighter 7</span>
+<span class="hint">&#9662; click to open the full per-level build</span>
+</summary>
+<div class="body">
+<!-- build-data
+seat: durge
+name: Durge
+race: Duergar
+build: Oathbreaker Paladin 13 / Battle Master Fighter 7
+role: Tank
+primary: [CHA, STR]
+secondary: [CON]
+casting_stat: CHA
+melee: true
+weapon_pref: [one-handed martial + shield, two-handed if crit rider]
+armor_pref: heavy
+damage_types: [radiant, slashing, bludgeoning, piercing]
+wants: [CHA, STR, AC, crit, crit-threshold, saves, concentration, initiative, radiant, smite, aura, HP, anti-knockdown]
+avoid: [necrotic-only, DEX-based]
+orb: Malachite (Death)
+shards: [Critical strikes, crit-threshold, Steadfast]
+slots: [head, body, hands, feet, cloak, amulet, ring, ring, main, off]
+-->
+
+<p>The Urge, embraced and given a command voice. He does not sneak, he does not negotiate: he walks into the middle of the room, makes everything too afraid to fight back, and cashes the ones that stay.</p>
+<p><strong>The pitch:</strong></p>
+<ul class="md">
+<li><strong>He is the party's only real anchor.</strong> Heavy armour + shield, Aura of Protection (+CHA to every save in the huddle) and Aura of Courage covering three squishier seats. In honour mode, one failed save is how runs end; he is the answer to that.</li>
+<li><strong>Fear is the control layer.</strong> Dreadful Aspect frightens a room, Spiteful Suffering pins one target with damage-per-turn plus advantage for him, Bestow Curse (or Abjure Foe from the PHB2024 mod) takes a boss's turn apart.</li>
+<li><strong>Aura of Hate is the payoff nobody else in this party can use.</strong> +CHA modifier to melee damage for himself and any nearby <strong>Undead or Fiends</strong>. With <strong>Better Oathbreaker Summons</strong> installed, his own summons at Paladin 7 and 12 are Undead, but their melee weapon attacks must be verified before counting the aura bonus. Nearby enemy undead/fiends can also benefit.</li>
+<li><strong>Duergar gives him a free damage buff and an escape hatch.</strong> <strong>Enlarge</strong> (+1d4 weapon damage, advantage on STR checks and saves, 10 turns, <strong>no concentration</strong>, once per long rest) adds damage on eligible hits; the comparison with a crit die depends on the fight, and <strong>Invisibility</strong> (free, no slot, once per combat and at-will outside it) is the honour-mode disengage nobody else in this party has.</li>
+<li><strong>Why 13/7 and not pure Paladin 20?</strong> Fighter's tail buys <strong>Action Surge</strong> (a second full smite action on the turn that matters), a <strong>Battle Master</strong> control kit, and two extra feats. Paladin 14–20 buys slow half-caster slots he does not need.</li>
+</ul>
+<p><strong>Mods:</strong> base game (Patch 8) + UnlockLevelCurve + <strong>Paladin and Oaths DnD 5R PHB2024</strong> + optional <strong>Better Oathbreaker Summons</strong>. · <em>PS5-safe. ⚠ Character levels 13+ ride UnlockLevelCurve — the Fighter features are base-game, only the level unlock is modded; verify each at the Training Ring. ⚠ Confirm both paladin mods carry a Console tag in the in-game browser before relying on them; the build works on base Oathbreaker without either.</em></p>
+<h2>Race · Deity · Background</h2>
+<ul class="md">
+<li><strong>Race:</strong> <strong>Duergar</strong> (Gray Dwarf) — <strong>Tyler's override 2026-08-16</strong>, replacing the rolled Half-Orc. Traits, all verified on bg3.wiki:</li>
+<li><strong>Superior Darkvision 24m</strong> (double a normal dwarf's).</li>
+<li><strong>Duergar Resilience</strong> — advantage on saving throws against <strong>illusions, charm and paralysis</strong>; plus <strong>Dwarven Resilience</strong> (advantage vs poison, poison resistance).</li>
+<li><strong>Duergar Magic — Enlarge</strong> at level 3: <strong>+1d4 weapon damage</strong>, advantage on STR checks and saves, one size larger, <strong>10 turns, no concentration, once per long rest, no spell slot</strong>.</li>
+<li><strong>Duergar Magic — Invisibility</strong> at level 5: free, <strong>once per combat</strong> and unlimited outside combat, no slot.</li>
+<li>Dwarven Combat Training (battleaxe, handaxe, light hammer, warhammer), speed 7.5m.</li>
+<li>Racial ability bonuses are <strong>fully floating</strong> in Patch 8, so CHA +2 / CON +1 is legal on a Duergar — the stat line below does not change.</li>
+<li><strong>⚠ Read this before you count on the invisibility:</strong> the "busted" Duergar invisibility is a myth. <strong>BG3's Duergar Invisibility ends the moment you attack, cast a spell, interact with an object, take damage, or get wet</strong> — the same break conditions as the normal spell (bg3.wiki: Invisibility (Duergar)). What is genuinely strong is that it costs <strong>nothing</strong> and is reusable, so it is a scouting and escape tool, not an attack-while-invisible exploit. Do not build a turn around it.</li>
+<li><strong>What the swap costs:</strong> Half-Orc's <strong>Savage Attacks</strong> (an extra weapon die on every melee crit) and <strong>Relentless Endurance</strong> (drop to 1 HP instead of 0, once per long rest). Honest trade: <strong>Enlarge adds damage to eligible hits while active; its value versus Savage Attacks depends on hit count and critical-hit frequency</strong>, and the save advantages help in a party built around paralysis — but you are giving up a free "do not die" and the party's only such effect. Compensate by keeping Lay on Hands (bonus action) charged and never tanking on purpose.</li>
+<li><strong>Deity:</strong> flavour only — pick whatever the screen offers (Bhaal, obviously, in your head).</li>
+<li><strong>Background:</strong> <strong>Haunted One</strong> is the Durge default (Medicine + Intimidation in base BG3). Take whatever the origin locks; his skills do not carry the build.</li>
+</ul>
+<h2>Stats (point buy 27): STR 15 · DEX 10 · CON 14 · INT 8 · WIS 8 · CHA 15  <em>(+2 CHA / +1 CON racial → CHA 17 · CON 15)</em></h2>
+<ul class="md">
+<li><strong>CHA 17 → 20</strong> — the whole seat. Aura of Protection value, Aura of Hate damage, smite spell DCs, Dreadful Aspect DC. The default path reaches 20 without a story reward. Record any permanent bonus before adjusting the plan.</li>
+<li><strong>STR 15 → 19/20</strong> — his to-hit and weapon damage. <strong>The elixir rule is OFF this run</strong>, so STR is real points and real ASIs. Do not dump it.</li>
+<li><strong>CON 15</strong> — HP and concentration. He holds nothing critical, but honour mode punishes low HP.</li>
+<li><strong>DEX 10 / INT 8 / WIS 8</strong> — dumps. Heavy armour makes DEX irrelevant to AC; his own Aura of Protection patches the bad saves for everyone including himself.</li>
+<li><strong>Multiclass rule:</strong> BG3 imposes no ability-score prerequisites. The revised spread uses exactly 27 points. It is a recommended respec plan; your saved in-game scores remain separate.</li>
+</ul>
+<h2>Level path (Paladin 1–13 first, then Battle Master Fighter 1–7 — one row per character level)</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Char</th>
+<th>Class this level</th>
+<th>What you pick</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Oathbreaker Paladin 1</td>
+<td>Divine Sense; <strong>Lay on Hands</strong> (a <strong>bonus action</strong> with the PHB2024 mod, flat 5 charges); heavy armour, martial weapons, shields</td>
+<td>Oathbreaker at creation needs the unlock mod; otherwise break your oath and speak to the Oathbreaker Knight; restoring an oath is separate from a Withers respec</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Oathbreaker Paladin 2</td>
+<td><strong>Fighting Style: Defense</strong> (+1 AC) or Protection; <strong>Divine Smite</strong>; spellcasting begins — prepare <strong>Command</strong>, Bless, Shield of Faith</td>
+<td>Smite is the damage engine from here to 20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Oathbreaker Paladin 3</td>
+<td><strong>Spiteful Suffering</strong> (1d4+CHA necrotic per turn, you have advantage on it); <strong>Dreadful Aspect</strong> (Frighten nearby); <strong>Control Undead</strong>; oath spells <strong>Hellish Rebuke</strong>, <strong>Inflict Wounds</strong></td>
+<td>The subclass finally arrives. <strong>Racial: Enlarge unlocks at character 3</strong> (+1d4 weapon damage, 10 turns, no concentration)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Oathbreaker Paladin 4</td>
+<td><strong>Feat: Ability Improvement — STR +2 → 17</strong></td>
+<td>To-hit first; the party has enough saves early</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Oathbreaker Paladin 5</td>
+<td><strong>Extra Attack</strong> (2 attacks per Attack action)</td>
+<td>The only Extra Attack he will ever get; Fighter's later one does <strong>not</strong> stack. <strong>Racial: Invisibility unlocks at character 5</strong> (escape/scout only — it breaks on attack)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Oathbreaker Paladin 6</td>
+<td><strong>Aura of Protection</strong> — you and nearby allies add your <strong>CHA modifier to all saving throws</strong></td>
+<td>The single most valuable honour-mode feature in the party</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Oathbreaker Paladin 7</td>
+<td><strong>Aura of Hate</strong> — you and nearby <strong>Undead/Fiends</strong> add your CHA modifier to melee weapon damage. <strong>+2 undead summons</strong> if Better Oathbreaker Summons is installed</td>
+<td>Stand in the middle; the aura is a radius, not a target</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Oathbreaker Paladin 8</td>
+<td><strong>Feat: Ability Improvement — STR +2 → 19</strong></td>
+<td>Or Great Weapon Master if you have gone two-handed and STR is already 19+</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Oathbreaker Paladin 9</td>
+<td>3rd-level slots; oath spells <strong>Bestow Curse</strong>, <strong>Animate Dead</strong>; <strong>Abjure Foe</strong> if the PHB2024 mod is on (CHA-mod targets, WIS save or no movement, disadvantage, one action <strong>or</strong> bonus action per turn)</td>
+<td>Abjure Foe is a boss-shredder — verify it appears</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Oathbreaker Paladin 10</td>
+<td><strong>Aura of Courage</strong> — you and nearby allies cannot be Frightened</td>
+<td>Also makes your own Dreadful Aspect safe to spam</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Oathbreaker Paladin 11</td>
+<td><strong>Improved Divine Smite / Radiant Strikes</strong> — every melee weapon hit adds <strong>+1d8 radiant</strong>, free</td>
+<td>Radiant is un-resisted by most AMP undead; this is his reliable damage</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Oathbreaker Paladin 12</td>
+<td><strong>Feat: Ability Improvement — CHA +2 → 19</strong></td>
+<td>Aura value and Aura of Hate damage both scale</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Oathbreaker Paladin 13</td>
+<td>Higher-level paladin slots (4th-level paladin spells in tabletop: Death Ward, Banishment)</td>
+<td>⚠ Modded level — <strong>verify what this actually grants at the Training Ring</strong> before committing; if it is empty, take Fighter 1 here instead</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Battle Master Fighter 1</td>
+<td><strong>Fighting Style #2: Great Weapon Fighting</strong> or Duelling (match your weapon); <strong>Second Wind</strong></td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Battle Master Fighter 2</td>
+<td><strong>Action Surge</strong> — a second full action, i.e. a second smite volley</td>
+<td>⚠ Training Ring. This is why the tail exists</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Battle Master Fighter 3</td>
+<td><strong>Battle Master</strong>: 4 × d8 superiority dice; take <strong>Trip Attack</strong>, <strong>Menacing Attack</strong>, <strong>Riposte</strong>; Student of War</td>
+<td>⚠ Training Ring. Trip = prone = advantage for the whole party</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Battle Master Fighter 4</td>
+<td><strong>Feat: Sentinel</strong> (opportunity hit sets movement to 0; punish anyone attacking an ally near you)</td>
+<td>⚠ Training Ring. Turns him into a real wall</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Battle Master Fighter 5</td>
+<td><strong>Extra Attack — redundant, does NOT stack.</strong> A pass-through level to reach the Fighter 6 feat</td>
+<td>⚠ Training Ring. Honest: this level pays no rent, it is the toll for Fighter 6–7</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Battle Master Fighter 6</td>
+<td><strong>Feat: Ability Improvement — STR +1, CHA +1 → 20/20</strong> (or <strong>Alert</strong> if both are already capped)</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Battle Master Fighter 7</td>
+<td><strong>Know Your Enemy</strong>; <strong>+1 superiority die (5 × d8)</strong> and <strong>2 more maneuvers</strong> (Pushing Attack, Goading Attack)</td>
+<td>⚠ Training Ring</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(Five feats total: three Ability Improvements plus Sentinel plus the last Improvement/Alert. He stops at Fighter 7 because Fighter 8 is only another ASI and Paladin 14+ is slow half-caster filler.)</em></p>
+<h2>Spells &amp; abilities by spell level (Paladin is a prepared caster)</h2>
+<ul class="md">
+<li><strong>Channel Oath (short rest):</strong> <strong>Dreadful Aspect</strong> (Frighten nearby enemies), <strong>Spiteful Suffering</strong> (mark one target: 1d4+CHA necrotic per turn, advantage on your attacks against it), <strong>Control Undead</strong>.</li>
+<li><strong>1st:</strong> <strong>Command</strong> (Approach / Grovel / Drop — a free interrupt), <strong>Hellish Rebuke</strong> (oath, reaction), <strong>Inflict Wounds</strong> (oath), Bless, Shield of Faith, Wrathful Smite, Divine Favour, Compelled Duel, Searing Smite.</li>
+<li><strong>2nd:</strong> <strong>Crown of Madness</strong> (oath), <strong>Darkness</strong> (oath — a speed bump, not a fortress; see the run charter), Branding Smite, Magic Weapon, Aid, Lesser Restoration.</li>
+<li><strong>3rd:</strong> <strong>Bestow Curse</strong> (oath — the boss tax), <strong>Animate Dead</strong> (oath — Aura of Hate feeds them), <strong>Blinding Smite</strong>, <strong>Revivify</strong> (the honour-run insurance policy), Elemental Weapon, Remove Curse.</li>
+<li><strong>4th (character 13+, modded):</strong> in tabletop this is Death Ward and Banishment. ⚠ <strong>Verify at the Training Ring; do not plan a fight around a slot you have not seen.</strong></li>
+<li><strong>Battle Master maneuvers (5 by character 20):</strong> <strong>Trip Attack</strong> (prone → melee advantage for everyone), <strong>Menacing Attack</strong> (Frighten a caster), <strong>Riposte</strong> (free attack when missed), <strong>Pushing Attack</strong>, <strong>Goading Attack</strong> (force a target to attack him).</li>
+</ul>
+<h2>The signature loop (this is the build)</h2>
+<ol class="md">
+<li><strong>Before the door:</strong> Lay on Hands is a bonus action now, so top yourself off for free; cast Shield of Faith if a boss fight is coming, and pop <strong>Enlarge</strong> (10 turns, no concentration, so it covers most of a fight).</li>
+<li><strong>Turn one:</strong> walk into the centre so both auras cover the party, then <strong>Dreadful Aspect</strong> to Frighten the room. Frightened enemies cannot approach you, which buys Shadowheart a whole turn.</li>
+<li><strong>Mark the boss</strong> with <strong>Spiteful Suffering</strong> (damage every turn, plus advantage for all your attacks on it).</li>
+<li><strong>Action Surge</strong> on the round the boss is Held or Prone: 4 attacks, each auto-crit if it is Paralysed, each carrying <strong>Divine Smite + Radiant Strikes</strong>, eligible damage dice doubled on a critical hit. Duergar does not have Half-Orc Savage Attacks; verify mod-added riders separately.</li>
+<li><strong>Reaction economy:</strong> Sentinel to stop anything that walks past him, Riposte on a miss, Hellish Rebuke if something burns him.</li>
+</ol>
+<h2>How it plays</h2>
+<ul class="md">
+<li><strong>Act 1 (1–6):</strong> stand in front, Command Grovel on anything scary, spend smites only on named enemies. Aura of Protection at 6 changes the run.</li>
+<li><strong>Act 2 (7–11):</strong> Aura of Hate + summons if the mod is on. Radiant Strikes at 11 makes every swing matter against undead-heavy AMP content.</li>
+<li><strong>Act 3 (12–20):</strong> Action Surge plus Bestow Curse or Abjure Foe on the boss, then let Shadowheart's Hold Monster convert your smites into auto-crits.</li>
+</ul>
+<h2>AMP / gearing</h2>
+<ul class="md">
+<li><strong>Orb theme:</strong> <strong>Malachite (Death)</strong> for flavour, but his killing damage is <strong>radiant + physical</strong>, which most AMP undead do not resist. Do not chase necrotic gear for him.</li>
+<li><strong>Shards (confirmed names only):</strong> <strong>Critical strikes</strong> and <strong>crit-threshold</strong> (his whole turn is crit conversion), <strong>Steadfast</strong> (anti-knockdown — he must not be moved out of aura range). <strong>Do not</strong> count on resistance-pierce; it is likely broken on the PS5 build.</li>
+<li><strong>Craft target:</strong> laddered <strong>rings and amulets</strong> (Astral Disintegrator → dust → Astrum Arcanum ladder). <strong>Armour cannot be Astrum-laddered</strong>, so take the best heavy armour AMP gives you and stop worrying about it.</li>
+<li>
+<p><strong>Weapon:</strong> any one-handed martial + shield keeps his AC honest. If a two-hander drops with a crit rider, switch and take Great Weapon Master at the next Improvement.</p>
+</li>
+<li>
+<p><strong>⚠ AMP is on Casual with merchant takeover OFF this run (charter §5b):</strong> merchants <strong>restock on long rest</strong> and other mods' items stay on their shelves, so this seat's gear plan is <strong>partly shoppable</strong> — check vendors each rest cycle before praying to a chest, and buy before you rest. Still never blind-sell uniques; they are disenchant dust.</p>
+</li>
+</ul>
+<h2>Combat playbook by bracket</h2>
+<ul class="md">
+<li><strong>Levels 1–5:</strong> he is just a paladin. Command and Divine Smite. Do not tank things you have not scouted; honour mode has no reload.</li>
+<li><strong>Levels 6–10:</strong> open with Dreadful Aspect, keep the party inside the aura radius, mark the biggest threat with Spiteful Suffering.</li>
+<li><strong>Levels 11–15:</strong> Radiant Strikes means every hit is worth taking. Start pairing turns with Shadowheart's Hold Monster.</li>
+<li><strong>Levels 16–20:</strong> Sentinel plus Trip Attack locks a boss in place; Action Surge on the auto-crit window. <strong>Enlarge before the boss door</strong>, and keep a Lay on Hands charge in reserve — without Half-Orc's Relentless Endurance, that is his only free save from dropping.</li>
+</ul>
+<h2>Build log</h2>
+<ul class="md">
+<li><strong>2026-08-16 (evening):</strong> <strong>stays Oathbreaker.</strong> Oath of Conquest was installed and considered for this seat and rejected: its payoffs are <strong>Scornful Rebuke at Paladin 15</strong> and <strong>Invincible Conqueror at 20</strong>, and this build stops at <strong>Paladin 13</strong>, so both are unreachable. Its own fear also ends <em>when the target takes damage</em>, which in a party built to nuke means it ends immediately, and <strong>Aura of Conquest</strong> would want Shadowheart holding concentration on Fear instead of <strong>Hold Monster</strong> - that trade breaks the party's auto-crit engine. Oathbreaker also cannot be broken by an evil route, which Vengeance can.</li>
+<li><strong>2026-08-16 (evening):</strong> <strong>Oathbreaker confirmed selectable at Paladin 1</strong> in Tyler's install, which is what the level table already assumed. No path change.</li>
+<li>
+<p><strong>2026-08-16 (evening):</strong> <strong>Aura of Hate Fix for Oathbreakers</strong> installed. Aura of Hate now applies to Undead and Fiend <strong>unarmed</strong> attacks, not only melee weapon attacks, so his Animate Dead and Better Oathbreaker Summons undead finally receive the +CHA damage. This makes Aura of Hate at Paladin 7 a real party-damage aura rather than a personal one. See <code>Mod KB/08 - Oathbreaker &amp; Paladin (Run 2).md</code>.</p>
+</li>
+<li>
+<p><strong>2026-08-16:</strong> built for Run 2 from synergy roll S3 (code T9). Oathbreaker features verified on bg3.wiki (Spiteful Suffering / Dreadful Aspect / Control Undead at 3, Aura of Hate at 7, Bestow Curse + Animate Dead at 9, no 15/20 subclass feature). Half-Orc traits verified on bg3.wiki. Paralysed auto-crit within 3m verified. Paladin and Oaths PHB2024 + Better Oathbreaker Summons details from mod pages — <strong>console tags unverified, and Better Oathbreaker Summons is not yet in the 104-mod library; subscribe before relying on it.</strong> Character 13+ rows flagged for Training Ring verification.</p>
+</li>
+<li><strong>2026-08-16 (later):</strong> AMP mode set to <strong>Casual</strong> with <strong>merchant takeover disabled</strong>; gearing note added. Difficulty compensation lives in the charter §5b (Tactician Enhanced starts higher).</li>
+<li><strong>2026-08-16 (race override):</strong> Tyler swapped the rolled <strong>Half-Orc → Duergar</strong>. All Duergar traits verified on bg3.wiki (Superior Darkvision 24m; advantage vs illusion/charm/paralysis; Enlarge at 3, +1d4 damage, 10 turns, no concentration, 1/long rest; Invisibility at 5, free, 1/combat). <strong>The 'invisibility does not break on attack' claim is FALSE</strong> — bg3.wiki lists the standard break conditions; recorded here so it is never written as fact. Cost of the swap (Savage Attacks + Relentless Endurance) documented in the race section.</li>
+</ul>
+<h2>Review correction record — 2026-09-05</h2>
+<p>Creation point-buy verified at 27 before +2/+1. Default ASIs do not assume Hag’s Hair. Current character-sheet numbers must be recorded in the companion; this document is the plan. Base rules checked against bg3.wiki (Abilities, Metamagic, Hex Warrior, Bind Pact Weapon, Improved Extra Attack and Haunted One). Mod overrides and character levels above 12 still require installed-version verification.</p>
+</div>
+</details>
+
+<details class="char" id="minthara">
+<summary>
+<span class="role">Role: The Executioner (darkness-gish + burst smiter)</span>
+<span class="name">🕷️ MINTHARA — "The Dark Lady"</span>
+<span class="sub2">Shadow Magic Sorcerer 14 / Oath of Conquest Paladin 6</span>
+<span class="hint">&#9662; click to open the full per-level build</span>
+</summary>
+<div class="body">
+<!-- build-data
+seat: minthara
+name: Minthara
+race: Lolth-Sworn Drow
+build: Shadow Magic Sorcerer 14 / Oath of Conquest Paladin 6
+role: Gish
+primary: [CHA]
+secondary: [CON, DEX]
+casting_stat: CHA
+melee: true
+weapon_pref: [finesse one-handed, longsword]
+armor_pref: heavy
+damage_types: [radiant, slashing, piercing, psychic, fire, lightning]
+wants: [CHA, CON, concentration, AC, crit, spell-save-DC, spell-attack, initiative, saves, darkness, advantage, smite, HP]
+avoid: [necrotic-only, heavy-STR]
+orb: Amethyst (Thought)
+shards: [Khormus, Critical strikes, crit-threshold]
+slots: [head, body, hands, feet, cloak, amulet, ring, ring, main, off]
+-->
+
+<p>She kills one thing per fight and it is always the thing that mattered. Everything else is theatre: her own darkness, a hound made of ill omen, and a sword that pays out.</p>
+<p><strong>The pitch:</strong></p>
+<ul class="md">
+<li><strong>A second aura on legs.</strong> Paladin 6 buys <strong>Aura of Protection</strong> (+CHA to every save nearby). Two overlapping auras with Durge is why this party survives honour mode with a wizard and a fighter standing next to a boss.</li>
+<li><strong>Conquest's mark gives her advantage on demand</strong> against one target, every short rest. Advantage plus smites plus a crit-fishing party is a boss deleted. It replaced Vow of Enmity on 2026-08-16 because <strong>Oath of Vengeance cannot survive this run</strong> (see the oath note below).</li>
+<li><strong>Hound of Ill Omen (Sorcerer 6)</strong> is her control: a shadow hound that hunts one target for 3 sorcery points, recharging on a short rest.</li>
+<li><strong>Her own Darkness, with the sight to fight in it.</strong> Eyes of the Dark gives Devil's-Sight-style vision, so her Darkness blinds the enemy and not her. <em>(Per the run charter: Darkness is a speed bump, not a fortress — AMP's AI walks in and melees.)</em></li>
+<li><strong>Quicken is the real metamagic.</strong> Quickened single <strong>Haste</strong> on Lae'zel or Durge, then swing. <strong>Never Twinned Haste — it is engine-dodgy</strong> (project note, learned the hard way).</li>
+<li><strong>Why 14/6 and not Sorcerer 20?</strong> Six paladin levels buy heavy armour, Extra Attack, Divine Smite and the aura; Sorcerer 14 buys 6th-level slots and the full Shadow kit. Neither side has a dead level.</li>
+</ul>
+<p><strong>Mods:</strong> base game (Patch 8 — Shadow Magic Sorcerer is base, no mod needed) + UnlockLevelCurve + <strong>Paladin and Oaths DnD 5R PHB2024</strong> (bonus-action Lay on Hands) + <strong>Mystra's Spells</strong> (for Shadow Blade, optional — see the warning below). · <em>PS5-safe. ⚠ Character 13+ rides UnlockLevelCurve; verify at the Training Ring.</em></p>
+<h2>Race · Deity · Background</h2>
+<ul class="md">
+<li><strong>Race:</strong> <strong>Lolth-Sworn Drow</strong> (canon, unchanged) — Superior Darkvision pairs with her own Darkness; Drow weapon proficiencies (rapier, shortsword, hand-crossbow) are free.</li>
+<li><strong>Deity:</strong> flavour only — take whatever the oath screen offers.</li>
+<li><strong>Background:</strong> whatever her origin locks. Her skills do not carry the build.</li>
+</ul>
+<h2>Stats (point buy 27): STR 8 · DEX 14 · CON 15 · INT 8 · WIS 10 · CHA 15  <em>(+2 CHA / +1 CON racial → CHA 17 · CON 16)</em></h2>
+<ul class="md">
+<li><strong>CHA 17 → 20</strong> — attacks are not CHA-based, but everything else is: spell DCs, sorcery output, Aura of Protection, smite spell DCs. Cap it first.</li>
+<li><strong>STR 8 / DEX 14</strong> — use a finesse weapon with DEX. Removing the imaginary Paladin stat gate frees points for DEX and WIS; do not use a STR-only longsword as the default weapon. This is a caster/control-first build, not a high-accuracy martial carry.</li>
+<li><strong>CON 16</strong> — concentration on Haste, Darkness and Hold-type spells. Non-negotiable for a concentration seat.</li>
+<li><strong>WIS 10</strong> — improves the starting WIS modifier to +0. DEX 14 also benefits initiative, DEX saves and finesse attacks; heavy armour does not remove those uses.</li>
+<li><strong>Multiclass rule:</strong> BG3 imposes no ability-score prerequisites. The revised spread uses exactly 27 points. It is a recommended respec plan; your saved in-game scores remain separate.</li>
+</ul>
+<h2>Level path (Paladin 1–6 first for armour and the aura, then Sorcerer 1–14 — one row per character level)</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Char</th>
+<th>Class this level</th>
+<th>What you pick</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Oath of Conquest Paladin 1</td>
+<td>Divine Sense; <strong>Lay on Hands</strong> (bonus action with the PHB2024 mod); heavy armour, martial weapons, shields</td>
+<td>Start paladin so Act 1 has armour</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Conquest Paladin 2</td>
+<td><strong>Fighting Style: Duelling</strong> (+2 damage one-handed) or Defense; <strong>Divine Smite</strong>; prepare <strong>Command</strong>, Bless</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Conquest Paladin 3</td>
+<td><strong>Channel Oath: the Conquest mark</strong> (advantage on your attacks against one target for 3 rounds; on a melee hit it forces a WIS save or Frightened until the end of its next round <strong>or until it takes damage</strong>); oath spells per the mod</td>
+<td>The burst button. ⚠ The mod's page describes the mark as a <strong>level 1</strong> option; BG3 only hands out Channel Oath charges at Paladin 3. <strong>Verify at the Training Ring</strong> and take it whenever it appears</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Conquest Paladin 4</td>
+<td><strong>Feat: Ability Improvement — CHA +2 → 19</strong></td>
+<td>Aura and DC scaling start here</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Conquest Paladin 5</td>
+<td><strong>Extra Attack</strong>; oath spells per the Conquest mod</td>
+<td>Her only Extra Attack — Sorcerer adds none. ⚠ Misty Step and Hold Person were <strong>Vengeance</strong> oath spells and are no longer guaranteed; check what Conquest actually grants at the level-up screen</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Conquest Paladin 6</td>
+<td><strong>Aura of Protection</strong> — +CHA modifier to all saves for her and nearby allies</td>
+<td>The reason the dip is 6 and not 5</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Shadow Magic Sorcerer 1</td>
+<td><strong>Eyes of the Dark</strong> (24 m darkvision; the Darkness options arrive at Sorcerer 3); <strong>Strength of the Grave</strong> (a chance to survive at 1 HP instead of dropping); cantrips + 1st-level slots</td>
+<td>Sorcerer from here to 20</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Shadow Sorcerer 2</td>
+<td><strong>Font of Magic</strong>; choose two Metamagics: <strong>Twinned</strong> and <strong>Extended</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Shadow Sorcerer 3</td>
+<td><strong>Metamagic: Quickened Spell</strong> (third option); <strong>Darkness / Eyes of the Dark: Darkness</strong></td>
+<td>Quicken is the tempo engine. ⚠ <strong>Never Twin Haste</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Shadow Sorcerer 4</td>
+<td><strong>Feat: Ability Improvement — CHA +1 / CON +1</strong> (→ CHA 20 / CON 17 without a story reward) or <strong>War Caster</strong></td>
+<td>War Caster if she is losing concentration</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Shadow Sorcerer 5</td>
+<td>3rd-level slots: <strong>Counterspell</strong>, <strong>Fireball</strong> or <strong>Hypnotic Pattern</strong></td>
+<td>Counterspell is honour-mode insurance</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Shadow Sorcerer 6</td>
+<td><strong>Hound of Ill Omen</strong> — 3 sorcery points, short-rest recharge; a shadow hound that hunts one target</td>
+<td>The subclass payoff. ⚠ Verify the exact debuff text on the tooltip</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Shadow Sorcerer 7</td>
+<td>4th-level slots: <strong>Greater Invisibility</strong> or <strong>Wall of Fire</strong></td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Shadow Sorcerer 8</td>
+<td><strong>Feat: War Caster</strong> (or Ability Improvement if CHA is not 20)</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Shadow Sorcerer 9</td>
+<td>5th-level slots: <strong>Hold Monster</strong> (paralysis = melee auto-crits for Durge and Lae'zel)</td>
+<td>⚠ Training Ring. Her best single spell</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Shadow Sorcerer 10</td>
+<td>Metamagic #4: <strong>Distant</strong> or <strong>Careful Spell</strong></td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Shadow Sorcerer 11</td>
+<td>6th-level slots; <strong>Shadow Walk</strong> (Shadow Magic feature at 11)</td>
+<td>⚠ Training Ring — verify Shadow Walk appears</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Shadow Sorcerer 12</td>
+<td><strong>Feat: Alert</strong> (+5 initiative — she wants to Vow and burst before the enemy moves)</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Shadow Sorcerer 13</td>
+<td>Higher-level sorcerer progression</td>
+<td>⚠ Training Ring — <strong>verify what this grants; BG3 has no 7th-level spells, so expect slots, not new spell tiers</strong></td>
+</tr>
+<tr>
+<td>20</td>
+<td>Shadow Sorcerer 14</td>
+<td>Higher-level sorcerer progression</td>
+<td>⚠ Training Ring — same caveat, written honestly rather than invented</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(Feats: character 4, 10, 14, 18. She stops the paladin side at 6 because Paladin 7–11 gives her nothing a Sorcerer level would not beat, and Improved Divine Smite at 11 is too far away.)</em></p>
+<h2>Spells &amp; abilities by level</h2>
+<ul class="md">
+<li><strong>Paladin (prepared):</strong> <strong>Command</strong>, Bless, Shield of Faith, Wrathful Smite, <strong>Bane</strong> and <strong>Hunter's Mark</strong> (oath), <strong>Misty Step</strong> and <strong>Hold Person</strong> (oath), Branding Smite, Magic Weapon.</li>
+<li><strong>Sorcerer cantrips:</strong> Fire Bolt or Ray of Frost, <strong>Blade Ward</strong>, Minor Illusion, <strong>Shocking Grasp</strong> (the disengage-denial cantrip), Mage Hand.</li>
+<li><strong>Sorcerer 1st–2nd:</strong> <strong>Shield</strong>, Magic Missile, <strong>Mirror Image</strong>, Misty Step, <strong>Darkness</strong> (free from Eyes of the Dark), Hold Person.</li>
+<li><strong>Sorcerer 3rd–4th:</strong> <strong>Counterspell</strong>, <strong>Haste</strong> (Quickened, single target — never Twinned), Fireball, <strong>Hypnotic Pattern</strong>, <strong>Greater Invisibility</strong>, Wall of Fire.</li>
+<li><strong>Sorcerer 5th–6th:</strong> <strong>Hold Monster</strong> (the party's auto-crit button), Cone of Cold, Chain Lightning or Disintegrate depending on what AMP hands you.</li>
+<li><strong>Metamagic:</strong> <strong>Quickened</strong> (cast a levelled spell as a bonus action, then attack), <strong>Twinned</strong> (two single-target buffs — <strong>not Haste</strong>), plus Distant or Careful at 10.</li>
+</ul>
+<h2>⚠ Shadow Blade — read this before you build around it</h2>
+<p><strong>Shadow Blade</strong> (2d8 psychic, advantage against targets in dim light or darkness) comes from the <strong>Mystra's Spells</strong> mod, not base BG3. It looks perfect for her, and it may well be: conjure the blade, stand in your own Darkness, swing with advantage.</p>
+<p><strong>But whether Divine Smite works on a conjured Shadow Blade is UNVERIFIED</strong> — bg3.wiki's Divine Smite page says only "melee weapon attack" and does not rule on conjured weapons either way. So:</p>
+<ol class="md">
+<li><strong>Default plan: swing a real weapon</strong> (finesse rapier or a longsword AMP gives you). Smites are guaranteed to work.</li>
+<li><strong>Test Shadow Blade once</strong>, in a trash fight: conjure it, hit something, try to smite. If the smite prompt appears and the damage lands, promote it to her main weapon for the darkness advantage.</li>
+<li><strong>Do not build the run around it until you have seen it work.</strong> Also confirm on the tooltip whether it takes concentration — if it does, it competes with Haste and Hold Monster, which is a real cost.</li>
+</ol>
+<h2>The signature loop (this is the build)</h2>
+<ol class="md">
+<li><strong>Pre-fight:</strong> Quickened <strong>Haste</strong> on Durge or Lae'zel (a bonus action, so she still acts).</li>
+<li><strong>Turn one:</strong> <strong>the Conquest mark</strong> on the boss (Channel Oath, advantage on everything she does to it for 3 rounds).</li>
+<li><strong>Attack twice with Divine Smite</strong> on whichever hit crits, or the second hit if neither did. With advantage from the Vow, crits happen often — and this party's other crit sources stack on top.</li>
+<li><strong>When the fight is wide instead of tall:</strong> <strong>Hold Monster</strong> or <strong>Hypnotic Pattern</strong> instead, and let Durge and Lae'zel cash the paralysis.</li>
+<li><strong>Reaction:</strong> <strong>Counterspell</strong> anything a boss casts; that is what the slot is for in honour mode.</li>
+</ol>
+<h2>How it plays</h2>
+<ul class="md">
+<li><strong>Act 1 (1–6):</strong> a straight paladin. The Conquest mark into two smited hits deletes early named enemies.</li>
+<li><strong>Act 2 (7–12):</strong> sorcerer levels come online. Darkness plus Eyes of the Dark for one-sided fights, Hound of Ill Omen on the boss, Counterspell held ready.</li>
+<li><strong>Act 3 (13–20):</strong> Hold Monster into Durge's Action Surge is the party's kill sequence. Quickened Haste every fight that matters.</li>
+</ul>
+<h2>AMP / gearing</h2>
+<ul class="md">
+<li><strong>Orb theme:</strong> <strong>Amethyst (psychic/Thought)</strong> if Shadow Blade proves out; otherwise <strong>Agate (War)</strong>. Her damage is physical + radiant smites, which AMP undead rarely resist.</li>
+<li><strong>Shards (confirmed names only):</strong> <strong>Khormus</strong> (AC tracks concentration — excellent on a concentration caster who also stands in melee), <strong>Critical strikes</strong>, <strong>crit-threshold</strong>.</li>
+<li><strong>Craft target:</strong> laddered <strong>amulet + rings</strong>; a finesse or one-handed weapon she can smite with. Armour cannot be laddered.</li>
+<li>
+<p><strong>Note:</strong> her spell save DC has no shard support (there is <strong>no spell-save-DC shard</strong> — do not go looking for one). DC comes from CHA and level only.</p>
+</li>
+<li>
+<p><strong>⚠ AMP is on Casual with merchant takeover OFF this run (charter §5b):</strong> merchants <strong>restock on long rest</strong> and other mods' items stay on their shelves, so this seat's gear plan is <strong>partly shoppable</strong> — check vendors each rest cycle before praying to a chest, and buy before you rest. Still never blind-sell uniques; they are disenchant dust.</p>
+</li>
+</ul>
+<h2>Combat playbook by bracket</h2>
+<ul class="md">
+<li><strong>Levels 1–6:</strong> paladin fundamentals. Do not spend every smite; honour mode fights are long.</li>
+<li><strong>Levels 7–12:</strong> learn the Quicken rhythm: bonus-action spell, then weapon attacks. Keep Darkness for retreats, not sieges.</li>
+<li><strong>Levels 13–16:</strong> Hold Monster changes every boss fight. Announce it so Durge holds his Action Surge for that turn.</li>
+<li><strong>Levels 17–20:</strong> Alert means she often goes first: Vow, Quickened Haste, then burst.</li>
+</ul>
+<h2>The oath, and why it is Conquest (2026-08-16)</h2>
+<p><strong>Oath of Vengeance cannot survive this run.</strong> bg3.wiki lists <em>revealing the location of the Emerald Grove to Minthara</em> as an oath-breaking action for Vengeance, and that is step one of this run's evil route. A broken oath costs her Channel Oath entirely, turns her into an Oathbreaker, and wants 1000 gold at Withers to atone. Building around a feature the run is guaranteed to delete is not a build.</p>
+<p><strong>Oath of Conquest</strong> (Havsglimt's mod, installed 2026-08-16) fits an evil run without that tax, and its own tenets reward exactly what this party does:</p>
+<ul class="md">
+<li><strong>The mark (Channel Oath):</strong> advantage on attacks against one target for 3 rounds, and on a melee hit the target makes a WIS save or is Frightened until the end of its next round <em>or until it takes damage</em>.</li>
+<li><strong>Aura of Conquest (Paladin 7):</strong> frightened creatures inside it have their movement reduced to 0 and take psychic damage equal to half your Paladin level at the start of their turn. <strong>She never reaches this</strong> at Paladin 6, and that is fine: the dip is bought for Aura of Protection.</li>
+<li><strong>Scornful Rebuke (15)</strong> and <strong>Invincible Conqueror (20)</strong> are out of reach at Paladin 6. Do not plan around them.</li>
+</ul>
+<p><strong>What she actually gains vs Vengeance:</strong> an oath that survives the run, plus the same advantage-on-demand button. <strong>What she gives up:</strong> Vengeance's <em>Inquisitor's Might</em> and <em>Hunter's Mark / Misty Step</em> oath spells. Her Sorcerer list already covers mobility.</p>
+<p>⚠ <strong>Unverified:</strong> whether this mod implements oath-breaking triggers of its own. Conquest's tenets (rule by fear, strength above all) point the other way, but watch for the Oath Broken condition after the grove. If it ever breaks, she becomes an Oathbreaker, which is still a working chassis for her, just without the mark.</p>
+<h2>Astarion stands in until Minthara joins</h2>
+<p>Minthara only joins after the grove is raided, so Astarion holds her seat through most of Act 1.</p>
+<ol class="md">
+<li><strong>Respec Astarion at Withers</strong> onto this exact path: Paladin first, then Sorcerer, same order as the table above. He is a Vampire Spawn, not a Drow, so he has no Faerie Fire and no superior darkvision. Everything else in the plan is race-agnostic (BG3 racial bonuses are floating, charter §3).</li>
+<li><strong>Nothing transfers.</strong> Levels are not banked. When Minthara joins she arrives at the party's level, and you rebuild her from level 1 at Withers on this same path. Astarion's run of the seat is only there so the party composition plays the way the guides assume.</li>
+<li><strong>Astarion approves of the raid</strong>, so using him for it costs no approval you care about.</li>
+<li><strong>When she joins:</strong> respec Minthara onto this file, bench Astarion, and move her gear over. Log it in <code>Item Pivot Ledger.md</code>.</li>
+</ol>
+<h2>Build log</h2>
+<ul class="md">
+<li>
+<p><strong>2026-08-16 (evening):</strong> oath switched <strong>Vengeance -&gt; Conquest</strong> (Havsglimt's Oath of Conquest mod, installed by Tyler). Reason: bg3.wiki lists revealing the Grove to Minthara as a Vengeance oath-break, which this run does by design. Conquest's mark replaces Vow of Enmity one-for-one as the advantage button; Aura of Conquest at Paladin 7 is out of reach at 6 and is not planned around. Mark level flagged for Training Ring verification (mod page says level 1, BG3 grants Channel Oath at 3). Astarion stand-in section added.</p>
+</li>
+<li>
+<p><strong>2026-08-16:</strong> built for Run 2 from synergy roll S3 (code G20). Shadow Magic Sorcerer confirmed base game (Patch 8) via the project's class reference. Aura of Protection at Paladin 6 and Vow of Enmity at Paladin 3 verified on bg3.wiki. Hound of Ill Omen placed at Sorcerer 6 per bg3.wiki; its exact debuff wording <strong>unverified</strong> — check the tooltip. Shadow Blade sourced to Mystra's Spells; <strong>Divine Smite on a conjured weapon is unverified and flagged in its own section</strong>. Character 13+ rows flagged for Training Ring verification. Twinned Haste explicitly avoided per project note.</p>
+</li>
+<li><strong>2026-08-16 (later):</strong> AMP mode set to <strong>Casual</strong> with <strong>merchant takeover disabled</strong>; gearing note added. Difficulty compensation lives in the charter §5b (Tactician Enhanced starts higher).</li>
+</ul>
+<h2>Review correction record — 2026-09-05</h2>
+<p>Creation point-buy verified at 27 before +2/+1. Default ASIs do not assume Hag’s Hair. Current character-sheet numbers must be recorded in the companion; this document is the plan. Base rules checked against bg3.wiki (Abilities, Metamagic, Hex Warrior, Bind Pact Weapon, Improved Extra Attack and Haunted One). Mod overrides and character levels above 12 still require installed-version verification.</p>
+</div>
+</details>
+
+<details class="char" id="shadowheart">
+<summary>
+<span class="role">Role: The Lockdown (save-or-suck control + auto-crit enabler)</span>
+<span class="name">🐍 SHADOWHEART — "The Puppeteer"</span>
+<span class="sub2">Enchantment Wizard 20</span>
+<span class="hint">&#9662; click to open the full per-level build</span>
+</summary>
+<div class="body">
+<!-- build-data
+seat: shadowheart
+name: Shadowheart
+race: Half-Elf
+build: Enchantment Wizard 20
+role: Caster
+primary: [INT]
+secondary: [CON, DEX]
+casting_stat: INT
+melee: false
+weapon_pref: [staff, quarterstaff]
+armor_pref: clothing
+damage_types: [force, cold, fire, lightning, psychic]
+wants: [INT, CON, spell-save-DC, spell-attack, concentration, AC, initiative, saves, spell-slots, HP, anti-knockdown]
+avoid: [heavy-armor, STR, melee-only]
+orb: Amethyst (Thought)
+shards: [Khormus, Great Mind, Steadfast]
+slots: [head, body, hands, feet, cloak, amulet, ring, ring, main, off, ranged]
+-->
+
+<p>Shar took her memories, so she took everyone else's will. She does not out-damage the party; she decides which enemy is allowed to have a turn, and hands the rest to Durge as paralysed meat.</p>
+<p><strong>The pitch:</strong></p>
+<ul class="md">
+<li><strong>She is the party's win condition, not its damage.</strong> Every kill in this party is faster when the target is <strong>Paralysed</strong> — a Paralysed creature within 3m is <strong>hit automatically as a critical hit</strong> by melee attacks. Two smiters plus one Hexblade crit-fisher makes that the single most valuable thing anyone can do.</li>
+<li><strong>Split Enchantment (level 10) is the multiplier:</strong> a single-target enchantment spell hits <strong>two</strong> targets. Two Held bosses, one spell. <em>(⚠ Which spells qualify is unverified spell-by-spell — test Hold Person first, see the note below.)</em></li>
+<li><strong>Hypnotic Gaze</strong> is a no-slot, no-save-spam way to remove one melee threat from a fight while she keeps concentration on something else.</li>
+<li><strong>Wizard 20 pays rent the whole way</strong> because she learns from every scroll AMP drops. This is the seat that turns random loot into new capability, which is exactly the point of an AMP run.</li>
+<li><strong>Why not a cleric?</strong> This party already has two paladins carrying auras and Lay on Hands, plus Revivify on Durge. It does not need a healer; it needs someone to stop the boss acting.</li>
+</ul>
+<p><strong>Mods:</strong> base game (Patch 8) + UnlockLevelCurve + <strong>Mystra's Spells</strong> / spell packs (scroll pool). · <em>PS5-safe. ⚠ BG3 has no 7th-level-or-higher spells; character 13+ wizard levels grant slots, features and known spells, </em><em>not</em><em> new spell tiers — verify each at the Training Ring.</em></p>
+<h2>Race · Deity · Background</h2>
+<ul class="md">
+<li><strong>Race:</strong> <strong>Half-Elf</strong> (canon, unchanged) — Fey Ancestry (advantage against being Charmed) and a free skill.</li>
+<li><strong>Deity:</strong> Shar, for the story. Flavour only mechanically.</li>
+<li><strong>Background:</strong> her origin default (Acolyte). Take <strong>Arcana</strong> and <strong>Perception</strong> proficiencies where the level-up lets you — nobody else in this party is spotting traps.</li>
+</ul>
+<h2>Stats (point buy 27): STR 8 · DEX 14 · CON 15 · INT 15 · WIS 10 · CHA 8  <em>(+2 INT / +1 CON racial → INT 17 · CON 16)</em></h2>
+<ul class="md">
+<li><strong>INT 17 → 20</strong> — spell save DC is the entire seat. Every Hold, every Hypnotic Pattern lives or dies on this number. The default path reaches INT 20 through ASIs without a story reward. A permanent bonus is optional and must be recorded before changing those picks.</li>
+<li><strong>CON 16</strong> — concentration. She holds Hold Monster or Hypnotic Pattern for whole fights; losing it is how honour runs end. <strong>War Caster at some point is not optional.</strong></li>
+<li><strong>DEX 14</strong> — AC in robes plus initiative. She wants to act before the enemy so the lockdown lands first.</li>
+<li><strong>WIS 10 / CHA 8 / STR 8</strong> — dumps. Durge's Aura of Protection covers her weak saves; that is the party's design.</li>
+<li><strong>⚠ No multiclass gate</strong> — she is pure Wizard 20, so nothing to satisfy.</li>
+</ul>
+<h2>Level path (pure Enchantment Wizard — one row per character level)</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Char</th>
+<th>Class this level</th>
+<th>What you pick</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Wizard 1</td>
+<td>Cantrips (<strong>Fire Bolt</strong>, <strong>Ray of Frost</strong>, <strong>Blade Ward</strong> or Mage Hand); 1st-level slots; <strong>Sleep</strong>, <strong>Magic Missile</strong>, <strong>Shield</strong>, Grease</td>
+<td>Sleep is genuinely strong at low level in honour mode</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Enchantment Wizard 2</td>
+<td><strong>School of Enchantment</strong>: <strong>Hypnotic Gaze</strong> — one creature is Incapacitated while you keep it up</td>
+<td>Her first real control, and it costs no slot</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Wizard 3</td>
+<td>2nd-level slots: <strong>Hold Person</strong>, <strong>Misty Step</strong></td>
+<td>Hold Person is the first auto-crit enabler</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Wizard 4</td>
+<td><strong>Feat: Ability Improvement — INT +2 → 19</strong></td>
+<td>DC first, always</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Wizard 5</td>
+<td>3rd-level slots: <strong>Counterspell</strong>, <strong>Hypnotic Pattern</strong>, Fireball</td>
+<td>Hypnotic Pattern wins whole fights</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Enchantment Wizard 6</td>
+<td><strong>Instinctive Charm</strong> — redirect an attacker onto someone else (reaction)</td>
+<td>Also a get-off-me button</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Wizard 7</td>
+<td>4th-level slots: <strong>Greater Invisibility</strong>, <strong>Wall of Fire</strong>, Confusion</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Wizard 8</td>
+<td><strong>Feat: War Caster</strong> (advantage on concentration saves)</td>
+<td>Or +1 INT / +1 CON if concentration has not failed you yet — but take War Caster</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Wizard 9</td>
+<td>5th-level slots: <strong>Hold Monster</strong>, Cone of Cold</td>
+<td><strong>The build's keystone spell</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Enchantment Wizard 10</td>
+<td><strong>Split Enchantment</strong> — a single-target enchantment spell targets <strong>two</strong> creatures</td>
+<td>⚠ Test on Hold Person before trusting it on Hold Monster</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Wizard 11</td>
+<td>6th-level slots: Chain Lightning, Disintegrate, Globe of Invulnerability</td>
+<td>The highest spell tier BG3 has</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Wizard 12</td>
+<td><strong>Feat: Ability Improvement — INT +1 / CON +1 → INT 20</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Wizard 13</td>
+<td>Higher-level wizard progression</td>
+<td>⚠ Training Ring — <strong>expect more slots and known spells, not 7th-level spells.</strong> Verify before planning</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Enchantment Wizard 14</td>
+<td><strong>Alter Memories</strong> (the target does not realise it was Charmed)</td>
+<td>⚠ Training Ring — mostly a narrative feature; do not build a fight around it</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Wizard 15</td>
+<td>Higher-level wizard progression</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Wizard 16</td>
+<td><strong>Feat: Alert</strong> (+5 initiative, cannot be Surprised)</td>
+<td>⚠ Training Ring. Going first is how the lockdown lands before the boss acts</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Wizard 17</td>
+<td>Higher-level wizard progression</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Wizard 18</td>
+<td>Higher-level wizard progression</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Wizard 19</td>
+<td><strong>Feat: Resilient (CON)</strong> or Ability Improvement</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Wizard 20</td>
+<td>Higher-level wizard progression</td>
+<td>⚠ Training Ring — in tabletop this is Signature Spells; <strong>do not assume BG3 implements it</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(Feats at character 4, 8, 12, 16, 19: INT to 20, War Caster, Alert, plus one Resilient/Improvement. Every level pays rent because a wizard level is always more slots and more scrolls learned — that is the honest justification for going pure to 20.)</em></p>
+<h2>Spells by level — what she actually carries</h2>
+<ul class="md">
+<li><strong>Cantrips:</strong> <strong>Fire Bolt</strong> (reliable un-resisted-ish damage), <strong>Ray of Frost</strong>, <strong>Blade Ward</strong>, <strong>Mage Hand</strong>, <strong>Minor Illusion</strong>.</li>
+<li><strong>1st:</strong> <strong>Shield</strong> (reaction, +5 AC), <strong>Magic Missile</strong> (never misses), <strong>Sleep</strong>, <strong>Grease</strong>, Feather Fall, Longstrider.</li>
+<li><strong>2nd:</strong> <strong>Hold Person</strong>, <strong>Misty Step</strong>, <strong>Mirror Image</strong>, Blur, <strong>Web</strong>, Invisibility.</li>
+<li><strong>3rd:</strong> <strong>Counterspell</strong>, <strong>Hypnotic Pattern</strong>, <strong>Slow</strong>, <strong>Fireball</strong>, <strong>Haste</strong> (if nobody else is casting it), Sleet Storm.</li>
+<li><strong>4th:</strong> <strong>Greater Invisibility</strong>, <strong>Wall of Fire</strong>, <strong>Confusion</strong>, Dimension Door, Ice Storm, Banishment.</li>
+<li><strong>5th:</strong> <strong>Hold Monster</strong> (the keystone), <strong>Cone of Cold</strong>, Wall of Stone, <strong>Telekinesis</strong>, Seeming.</li>
+<li><strong>6th:</strong> <strong>Chain Lightning</strong>, <strong>Disintegrate</strong>, <strong>Globe of Invulnerability</strong>, Flesh to Stone, Otiluke's Freezing Sphere.</li>
+<li><strong>From scrolls (the AMP part):</strong> she learns every wizard scroll the run drops. Send screenshots of scrolls too, not just gear — a new 5th- or 6th-level scroll can change her whole loadout.</li>
+</ul>
+<h2>⚠ Split Enchantment — verify before relying on it</h2>
+<p>Split Enchantment says a single-target <strong>enchantment</strong> spell can target two creatures. Whether BG3 applies that to <strong>Hold Monster</strong> specifically is <strong>unverified</strong>. Test order:</p>
+<ol class="md">
+<li>At level 10, cast <strong>Hold Person</strong> in a trash fight and check whether the targeting UI offers a second target.</li>
+<li>If it does, try <strong>Hold Monster</strong> at level 9+ on two enemies.</li>
+<li>If it does not, nothing breaks — she simply casts one Hold and uses her bonus/reaction on Hypnotic Gaze instead.</li>
+</ol>
+<h2>The signature loop (this is the build)</h2>
+<ol class="md">
+<li><strong>Initiative first</strong> (Alert, DEX 14). If she acts before the boss, the fight is usually already decided.</li>
+<li><strong>Round one, lock the room:</strong> <strong>Hypnotic Pattern</strong> on the group, or <strong>Hold Monster</strong> on the single thing that matters.</li>
+<li><strong>Call the target out loud</strong> so Durge and Lae'zel spend their turn on the Paralysed enemy — melee attacks within 3m against Paralysed are <strong>automatic critical hits</strong>.</li>
+<li><strong>Hold concentration.</strong> She does not need to cast again; her job is keeping the lock alive while War Caster protects it.</li>
+<li><strong>Reaction:</strong> <strong>Counterspell</strong> the enemy caster, or <strong>Shield</strong> if something reaches her.</li>
+</ol>
+<h2>How it plays</h2>
+<ul class="md">
+<li><strong>Act 1 (1–6):</strong> Sleep and Grease do unreasonable work. Hypnotic Gaze removes one melee attacker for free.</li>
+<li><strong>Act 2 (7–12):</strong> Hypnotic Pattern and Hold Monster arrive. Start pairing turns with the smiters instead of casting damage.</li>
+<li><strong>Act 3 (13–20):</strong> she is the initiator of every boss fight: lock first, let the party convert. Keep one 6th-level slot for a Counterspell or a Globe.</li>
+</ul>
+<h2>AMP / gearing</h2>
+<ul class="md">
+<li><strong>Orb theme:</strong> <strong>Amethyst (psychic/Thought)</strong> or <strong>Fluorite (Thunder)</strong> — but note that <strong>her damage is mostly irrelevant</strong>; gear her for <strong>AC, concentration and initiative</strong>.</li>
+<li><strong>Shards (confirmed names only):</strong> <strong>Khormus</strong> (AC tracks concentration — made for this seat), <strong>Great Mind</strong>, <strong>Steadfast</strong> (do not let a knockdown break concentration).</li>
+<li><strong>Craft target:</strong> laddered <strong>amulet + two rings</strong>. Armour cannot be Astrum-laddered, so wear the best robe that drops.</li>
+<li>
+<p><strong>Reminder:</strong> there is <strong>no spell-save-DC shard</strong> — do not go hunting for one. Her DC is INT and level, full stop.</p>
+</li>
+<li>
+<p><strong>⚠ AMP is on Casual with merchant takeover OFF this run (charter §5b):</strong> merchants <strong>restock on long rest</strong> and other mods' items stay on their shelves, so this seat's gear plan is <strong>partly shoppable</strong> — check vendors each rest cycle before praying to a chest, and buy before you rest. Still never blind-sell uniques; they are disenchant dust.</p>
+</li>
+</ul>
+<h2>Combat playbook by bracket</h2>
+<ul class="md">
+<li><strong>Levels 1–5:</strong> Sleep, Grease, Magic Missile. Stay behind Durge; she has 6 HP per level and no armour.</li>
+<li><strong>Levels 6–10:</strong> Hypnotic Pattern first, damage second. Learn every scroll you find.</li>
+<li><strong>Levels 11–15:</strong> Hold Monster into the smiters is now the standard opening for named enemies.</li>
+<li><strong>Levels 16–20:</strong> she goes first (Alert), locks, and holds. Counterspell is reserved for boss spells, not trash.</li>
+</ul>
+<h2>Build log</h2>
+<ul class="md">
+<li><strong>2026-08-16:</strong> built for Run 2 from synergy roll S3 (code C16). Enchantment features verified on bg3.wiki (Hypnotic Gaze at 2, Instinctive Charm at 6, Split Enchantment at 10, Alter Memories at 14). Paralysed = automatic critical hits from melee within 3m, with a save at the end of each of the target's turns, verified on bg3.wiki; Stunned (advantage only) kept distinct. <strong>Split Enchantment applicability to Hold Monster is unverified and flagged.</strong> Character 13+ rows written honestly as progression, with the standing caveat that BG3 has no 7th-level spells.</li>
+<li><strong>2026-08-16 (later):</strong> AMP mode set to <strong>Casual</strong> with <strong>merchant takeover disabled</strong>; gearing note added. Difficulty compensation lives in the charter §5b (Tactician Enhanced starts higher).</li>
+</ul>
+<h2>Review correction record — 2026-09-05</h2>
+<p>Creation point-buy verified at 27 before +2/+1. Default ASIs do not assume Hag’s Hair. Current character-sheet numbers must be recorded in the companion; this document is the plan. Base rules checked against bg3.wiki (Abilities, Metamagic, Hex Warrior, Bind Pact Weapon, Improved Extra Attack and Haunted One). Mod overrides and character levels above 12 still require installed-version verification.</p>
+</div>
+</details>
+
+<details class="char" id="laezel">
+<summary>
+<span class="role">Role: The Finisher (crit-fishing gish + Action Surge burst)</span>
+<span class="name">⚔️ LAE'ZEL — "The Cursed Blade"</span>
+<span class="sub2">Eldritch Knight Fighter 16 / Hexblade Warlock 4</span>
+<span class="hint">&#9662; click to open the full per-level build</span>
+</summary>
+<div class="body">
+<!-- build-data
+seat: laezel
+name: Lae'zel
+race: Githyanki
+build: Eldritch Knight Fighter 16 / Hexblade Warlock 4
+role: Gish
+primary: [STR]
+secondary: [CON, DEX]
+casting_stat: none
+melee: true
+weapon_pref: [two-handed, longsword, greatsword]
+armor_pref: heavy
+damage_types: [slashing, piercing, bludgeoning, force, psychic]
+wants: [STR, CON, crit, crit-threshold, AC, attack-roll, damage, initiative, HP, saves, anti-knockdown]
+avoid: [INT, spell-save-DC, clothing]
+orb: Ruby (Destruction)
+shards: [crit-threshold, Critical strikes, Steadfast]
+slots: [head, body, hands, feet, cloak, amulet, ring, ring, main, off, ranged]
+-->
+
+<p>Gith discipline plus a patron she would never admit to having. She marks one target with a curse, and from that moment every 19 she rolls against it is a critical hit — in a party that hands her paralysed targets on a plate.</p>
+<p><strong>The pitch:</strong></p>
+<ul class="md">
+<li><strong>Hexblade's Curse is the crit engine.</strong> Against the cursed target she adds her proficiency bonus to damage, <strong>scores critical hits on a roll of 19 or 20</strong>, and regains HP when it dies. Curse the boss, then swing four times.</li>
+<li><strong>Action Surge doubles the best round.</strong> Fighter 2 gives a second full action; on a turn where Shadowheart has Paralysed the target, that is four automatic critical hits.</li>
+<li><strong>Eldritch Knight buys the utility a fighter normally begs for:</strong> <strong>Shield</strong> (reaction, +5 AC), <strong>Misty Step</strong>, and <strong>War Magic</strong> at Fighter 7 (cast a cantrip, then attack as a bonus action).</li>
+<li><strong>INT 8 is deliberate, not a mistake.</strong> She only casts spells that never roll a save: Shield, Misty Step, and (optionally) Shadow Blade. No INT-based DC is ever used, so the dump costs nothing. <em>(Verified: this works precisely because none of those spells key off her spell save DC.)</em></li>
+<li><strong>Why 16/4 and not pure Fighter 20?</strong> The four warlock levels buy Hexblade's Curse, Pact of the Blade and a feat, and they cost her only the Fighter 17–20 tail. <strong>Extra Attack does not stack</strong> — she gets exactly one, from Fighter 5.</li>
+</ul>
+<p><strong>Mods:</strong> base game (Patch 8 — <strong>Hexblade is base</strong>, no warlock mod required) + UnlockLevelCurve + optional <strong>Eldritch Knight Plus</strong> and <strong>Mystra's Spells</strong>. · <em>PS5-safe. ⚠ Pactbound stays OFF this run (it is mutually exclusive with Dread Overlord and she does not need it). ⚠ Character 13+ rides UnlockLevelCurve; verify at the Training Ring.</em></p>
+<h2>Race · Deity · Background</h2>
+<ul class="md">
+<li><strong>Race:</strong> <strong>Githyanki</strong> (canon, unchanged) — Astral Knowledge, free <strong>Misty Step</strong> at level 5, medium armour and martial weapon proficiencies. The free Misty Step frees an EK spell slot.</li>
+<li><strong>Deity:</strong> flavour only.</li>
+<li><strong>Background:</strong> her origin default (Soldier — Athletics + Intimidation). Fits.</li>
+</ul>
+<h2>Stats (point buy 27): STR 15 · DEX 14 · CON 15 · INT 8 · WIS 8 · CHA 10  <em>(+2 STR / +1 CON racial → STR 17 · CON 16)</em></h2>
+<ul class="md">
+<li><strong>STR 17 → 20</strong> — attacks and damage. <strong>The elixir rule is OFF this run</strong>, so this is a real investment and her first two Improvements go here.</li>
+<li><strong>CON 16</strong> — HP and the occasional concentration spell. She is in melee against Legendary-Action bosses.</li>
+<li><strong>CHA 10</strong> — this is a STR fighter with a utility/curse dip. Do not use Bind Hexed Weapon or Bind Pact Weapon: both switch attacks to CHA even when lower. Keep ordinary STR weapon attacks and verify the combat log.</li>
+<li><strong>DEX 14</strong> — initiative; she wears medium or heavy armour.</li>
+<li><strong>INT 8</strong> — deliberate dump, see the pitch. Only no-save spells.</li>
+<li><strong>Multiclass rule:</strong> BG3 imposes no ability-score prerequisites. The revised spread uses exactly 27 points. It is a recommended respec plan; your saved in-game scores remain separate.</li>
+</ul>
+<h2>Level path (Fighter 1–5 for Extra Attack, then the Hexblade 4 dip, then Fighter 6–16 — one row per character level)</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Char</th>
+<th>Class this level</th>
+<th>What you pick</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Fighter 1</td>
+<td><strong>Fighting Style: Defense</strong> (+1 AC) or Duelling; <strong>Second Wind</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fighter 2</td>
+<td><strong>Action Surge</strong> — one extra full action per short rest</td>
+<td>The build's second-biggest button</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Eldritch Knight Fighter 3</td>
+<td><strong>Eldritch Knight</strong>: 1st-level wizard-list spells — take <strong>Shield</strong> and <strong>Magic Missile</strong> or Thunderwave; <strong>Weapon Bond</strong></td>
+<td>Shield is the reason she survives melee</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fighter 4</td>
+<td><strong>Feat: Ability Improvement — STR +2 → 19</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Fighter 5</td>
+<td><strong>Extra Attack</strong> (2 attacks per Attack action)</td>
+<td>Fighter 11 upgrades this to three attacks; the Warlock 4 dip does not add an extra attack</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Hexblade Warlock 1</td>
+<td><strong>Hexblade's Curse</strong> (curse a target: +proficiency to damage against it, <strong>crit on 19–20</strong>, regain HP on its death); <strong>Hex Warrior</strong>; Eldritch Blast; Pact Magic slots</td>
+<td>The dip starts paying immediately</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Hexblade Warlock 2</td>
+<td><strong>2 Eldritch Invocations</strong> — <strong>Armour of Shadows</strong> (utility; does not improve heavy armour) and <strong>Devil's Sight</strong> (see in magical darkness, including Minthara's)</td>
+<td>Devil's Sight matters: she fights inside her own party's Darkness</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Hexblade Warlock 3</td>
+<td><strong>Pact of the Tome</strong> — utility cantrips; retain normal STR-based weapon attacks</td>
+<td>⚠ Honour rule: <strong>Pact of the Blade does not stack with Extra Attack</strong>. She keeps the one from Fighter 5</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Hexblade Warlock 4</td>
+<td><strong>Feat: Great Weapon Master</strong> (if two-handed) or <strong>Ability Improvement — STR +1 / CON +1 → STR 20 / CON 17</strong></td>
+<td>Last warlock level; back to Fighter after this</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Fighter 6</td>
+<td><strong>Feat: STR +1 / CON +1 if not taken at 9; otherwise Savage Attacker</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Fighter 7</td>
+<td><strong>War Magic</strong> — cast a cantrip, then make a weapon attack as a <strong>bonus action</strong></td>
+<td>Eldritch Blast plus a swing in the same turn</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Fighter 8</td>
+<td><strong>Feat: Sentinel</strong> or <strong>Alert</strong></td>
+<td>Sentinel to lock a boss down, Alert to act first</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Fighter 9</td>
+<td><strong>Indomitable</strong> (reroll a failed saving throw)</td>
+<td>⚠ Training Ring. Real value in honour mode</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Fighter 10</td>
+<td><strong>Eldritch Strike</strong> — after you hit, the target has disadvantage on its next save against your spells</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Fighter 11</td>
+<td><strong>Improved Extra Attack</strong> — three attacks per Attack action; verify after the modded character-level unlock</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Fighter 12</td>
+<td><strong>Feat: Savage Attacker</strong> or Ability Improvement</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Fighter 13</td>
+<td>Fighter progression</td>
+<td>⚠ Training Ring — verify what lands; do not assume a feature name</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Fighter 14</td>
+<td><strong>Feat: Alert</strong> if not already taken, otherwise Tough</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Fighter 15</td>
+<td>Fighter progression</td>
+<td>⚠ Training Ring</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Fighter 16</td>
+<td><strong>Feat: Ability Improvement or Tough</strong></td>
+<td>⚠ Training Ring</td>
+</tr>
+</tbody>
+</table></div>
+<p><em>(</em><em>Correction on record:</em><em> BG3's Eldritch Knight has </em><em>no "Arcane Charge" feature</em><em> — it exists in tabletop only. Do not look for it. War Magic at Fighter 7 and Eldritch Strike at Fighter 10 are the real subclass beats.)</em></p>
+<h2>Spells &amp; abilities</h2>
+<ul class="md">
+<li><strong>Eldritch Knight spells (wizard list, no save DC needed):</strong> <strong>Shield</strong> (reaction, +5 AC — the single best EK spell), <strong>Misty Step</strong>, <strong>Magic Missile</strong>, <strong>Mirror Image</strong>, <strong>Blur</strong>, and <strong>Shadow Blade</strong> if Mystra's Spells is enabled.</li>
+<li><strong>Warlock:</strong> <strong>Eldritch Blast</strong> (low-CHA fallback, not the default damage plan), <strong>Devil's Sight</strong>, <strong>Hexblade's Curse</strong> (short-rest recharge), <strong>Hex Warrior / Pact of the Tome</strong> (do not bind the weapon to CHA).</li>
+<li><strong>Racial:</strong> Githyanki <strong>Misty Step</strong> at level 5, plus Astral Knowledge.</li>
+<li><strong>What she does NOT have:</strong> stacked Extra Attacks, an INT-based save DC, or Pact-of-the-Blade attack stacking. All three are honour-mode illusions.</li>
+</ul>
+<h2>The signature loop (this is the build)</h2>
+<ol class="md">
+<li><strong>Bonus action: Hexblade's Curse</strong> on the target the party has agreed to kill (usually the one Shadowheart is about to Hold).</li>
+<li><strong>Attack twice before character 15, three times from character 15 / Fighter 11.</strong> Against the cursed target she crits on <strong>19–20</strong> and adds proficiency to damage on every hit.</li>
+<li><strong>Action Surge: repeat the Attack action</strong> — four attacks total before Fighter 11, six from Fighter 11. Hits within 3 m of a Paralysed target are critical; attacks must still hit.</li>
+<li><strong>When she cannot reach:</strong> use mobility or a ranged weapon; Eldritch Blast uses low CHA and is a fallback. War Magic consumes the bonus action and should be compared with the full Attack action, especially after Fighter 11.</li>
+<li><strong>Reaction: Shield</strong> when a Legendary Action swings back at her, or <strong>Sentinel</strong> to stop something walking past.</li>
+</ol>
+<h2>How it plays</h2>
+<ul class="md">
+<li><strong>Act 1 (1–5):</strong> a straightforward fighter. Action Surge on the first named enemy; Shield keeps her upright.</li>
+<li><strong>Act 2 (6–11):</strong> the curse arrives at character 6 and the crit range changes everything. Devil's Sight lets her fight inside Minthara's Darkness.</li>
+<li><strong>Act 3 (12–20):</strong> she is the designated finisher. Curse, wait for the Hold, then Action Surge into up to six attacks from Fighter 11, with critical hits if the paralysis and distance conditions hold.</li>
+</ul>
+<h2>AMP / gearing</h2>
+<ul class="md">
+<li><strong>Orb theme:</strong> <strong>Ruby (Destruction/force)</strong> or <strong>Agate (War)</strong>. Her damage is <strong>physical</strong>, which almost nothing in AMP resists — that is a feature, keep it.</li>
+<li><strong>Shards (confirmed names only):</strong> <strong>crit-threshold</strong> and <strong>Critical strikes</strong> stack conceptually with Hexblade's 19–20 window; <strong>Steadfast</strong> to stay standing.</li>
+<li><strong>Craft target:</strong> a laddered <strong>two-handed weapon or longsword</strong> plus rings. Her weapon is the seat's whole gear plan — every AMP weapon upgrade goes to her first unless Durge is unarmed.</li>
+<li>
+<p><strong>Note:</strong> Use normal STR attacks with a suitable proficient weapon. Binding a weapon to CHA would undermine this spread; change the complete build if you want a CHA-based version.</p>
+</li>
+<li>
+<p><strong>⚠ AMP is on Casual with merchant takeover OFF this run (charter §5b):</strong> merchants <strong>restock on long rest</strong> and other mods' items stay on their shelves, so this seat's gear plan is <strong>partly shoppable</strong> — check vendors each rest cycle before praying to a chest, and buy before you rest. Still never blind-sell uniques; they are disenchant dust.</p>
+</li>
+</ul>
+<h2>Combat playbook by bracket</h2>
+<ul class="md">
+<li><strong>Levels 1–5:</strong> Action Surge early and often; short rests are cheap. Keep Shield up.</li>
+<li><strong>Levels 6–11:</strong> open every important fight with Hexblade's Curse. Do not waste it on trash — it recharges on a short rest.</li>
+<li><strong>Levels 12–16:</strong> Sentinel or Alert defines her role: lock the boss down or act first. Indomitable saves a run at least once.</li>
+<li><strong>Levels 17–20:</strong> she is the auto-crit cashier. Her turn should always come <strong>after</strong> Shadowheart's lock lands.</li>
+</ul>
+<h2>Build log</h2>
+<ul class="md">
+<li><strong>2026-08-16:</strong> built for Run 2 from synergy roll S3 (code G14). <strong>Hexblade confirmed base game (Patch 8)</strong> — no warlock mod required and Pactbound stays disabled. Hexblade's Curse (proficiency to damage, crit on 19–20, HP on kill) and Pact of the Blade at Warlock 3 verified. <strong>"Arcane Charge" removed — it does not exist in BG3's Eldritch Knight</strong>; War Magic at 7 and Eldritch Strike at 10 verified on bg3.wiki. Extra Attack non-stacking confirmed for honour mode: one Extra Attack total, from Fighter 5. INT 8 validated as safe because no spell she casts uses a save DC. Character 13+ rows flagged for Training Ring verification.</li>
+<li><strong>2026-08-16 (later):</strong> AMP mode set to <strong>Casual</strong> with <strong>merchant takeover disabled</strong>; gearing note added. Difficulty compensation lives in the charter §5b (Tactician Enhanced starts higher).</li>
+</ul>
+<h2>Review correction record — 2026-09-05</h2>
+<p>Creation point-buy verified at 27 before +2/+1. Default ASIs do not assume Hag’s Hair. Current character-sheet numbers must be recorded in the companion; this document is the plan. Base rules checked against bg3.wiki (Abilities, Metamagic, Hex Warrior, Bind Pact Weapon, Improved Extra Attack and Haunted One). Mod overrides and character levels above 12 still require installed-version verification.</p>
+</div>
+</details>
+
+<section class="engine-section" id="party-engine">
+<h2 class="section-title">Party Engine</h2>
+<div class="body">
+<h1>⚙️ THE PARTY ENGINE — how these four actually work together</h1>
+<p><em>Party S3, rolled 2026-08-15 by the synergy sampler (400 candidate parties scored, top tier rolled). This is the one-page answer to "what do I press."</em></p>
+<hr />
+<h2>The win condition: the Paralysis Cashier</h2>
+<p>One sentence: <strong>Shadowheart takes away the target's turn, and two smiters plus a crit-fisher cash it in the same round.</strong></p>
+<ol class="md">
+<li>A <strong>Paralysed</strong> creature (Hold Person / Hold Monster) takes <strong>critical hits from attacks that hit within 3 m</strong> (the attack roll still matters), and auto-fails STR and DEX saves.</li>
+<li><strong>Durge</strong> Action Surges into it: up to 4 attacks from character 15 when Action Surge is available; qualifying hits are critical, each carrying <strong>Divine Smite + Radiant Strikes</strong>, every die doubled, plus <strong>+1d4 per hit if Enlarge is up</strong> (Duergar, 10 turns, no concentration).</li>
+<li><strong>Lae'zel</strong> curses it first (<strong>crit on 19–20</strong>, proficiency to damage) and Action Surges for up to 4 attacks before Fighter 11 or 6 attacks from Fighter 11 (character 15); qualifying hits are critical.</li>
+<li><strong>Minthara</strong> adds <strong>Conquest mark</strong> advantage and her own smites, or holds Counterspell if the boss is a caster.</li>
+<li>A Paralysed target rolls a save at the <strong>end of each of its turns</strong>, so the window is one round. Everything above must happen in that round — call the target out loud.</li>
+</ol>
+<h2>Three support layers</h2>
+<ul class="md">
+<li><strong>LAYER 1 — Aura coverage (survive).</strong> Activate Aura of Protection and check its icon/radius on the character sheet. Two paladins provide overlapping coverage and redundancy; do not add two CHA modifiers into the plan without a combat-log check of the installed rules. Stay in range when useful, but spread against area damage rather than blindly clustering.</li>
+<li><strong>LAYER 2 — Fear and lockdown (deny).</strong> Durge's <strong>Dreadful Aspect</strong> frightens a room, <strong>Spiteful Suffering</strong> taxes the boss, <strong>Abjure Foe</strong> (PHB2024 mod) strips its action economy, Shadowheart's <strong>Hypnotic Pattern</strong> removes the adds. This party wins by making fewer enemies act, not by killing faster.</li>
+<li><strong>LAYER 3 — Check resistances (kill).</strong> Inspect the actual enemy before choosing physical, radiant or psychic damage; none is universally unresisted. <strong>⚠ AMP undead and fiends resist necrotic and the AI dodges resisted damage</strong> — which is why nobody in this party leans on necrotic despite the theme. Durge's necrotic Spiteful Suffering is a debuff, not a kill.</li>
+</ul>
+<h2>Turn rotation (late-game template; check current levels and resources)</h2>
+<ol class="md">
+<li><strong>Shadowheart</strong> (if her actual initiative permits; Alert is not taken until Wizard 16 on this path): <strong>Hold Monster</strong> on the boss, or <strong>Hypnotic Pattern</strong> if it is a crowd. Announce the target.</li>
+<li><strong>Lae'zel:</strong> <strong>Hexblade's Curse</strong> (bonus action) on that target, then the Attack action (2 attacks, or 3 from Fighter 11), then <strong>Action Surge</strong> for another Attack action if available and worthwhile.</li>
+<li><strong>Durge:</strong> walk in so both auras cover the party, <strong>choose Dreadful Aspect OR Attack + smite for the action</strong>. An additional action needs an available resource such as Action Surge, which arrives at character 15 on this path.</li>
+<li><strong>Minthara:</strong> <strong>the Conquest mark</strong> and smite the same target, or <strong>Quickened Haste</strong> on Lae'zel first, or <strong>Counterspell</strong> held for the boss.</li>
+<li><strong>Everyone:</strong> stay inside the aura radius. Leaving it is how someone fails a save and the run ends.</li>
+</ol>
+<h2>Honour-mode panic buttons</h2>
+<ol class="md">
+<li><strong>Durge's Lay on Hands</strong> is a <strong>bonus action</strong> (PHB2024 mod) — spend the bonus action and healing resource; verify the mod is installed, otherwise use the base-game action cost.</li>
+<li><strong>Durge's Revivify</strong> (Paladin 9) is the run's insurance. Keep a slot for it at all times in Act 2 and 3.</li>
+<li><strong>Durge's Duergar Invisibility</strong> (character 5+) — free, once per combat, no slot: the disengage when he is about to drop. <strong>It breaks the instant he attacks</strong>, so it is an escape, not a tactic. <em>(Note: swapping Half-Orc out means the party no longer has Relentless Endurance — nobody gets a free survival at 0 HP any more. Play the front line more carefully.)</em></li>
+<li><strong>Minthara's Strength of the Grave</strong> — a chance to survive at 1 HP instead of dropping.</li>
+<li><strong>Counterspell</strong> (once learned, with a slot and reaction available) should stop the most consequential hostile spell; use judgment rather than restricting it to boss labels. Legendary Actions mean bosses act between your turns; assume they get one more cast than you expect.</li>
+</ol>
+<h2>What this party is bad at, and what to do about it</h2>
+<ul class="md">
+<li><strong>No dedicated healer.</strong> Two paladins with Lay on Hands and one Revivify is the whole kit. <strong>Buy every healing potion you see</strong> and keep Withers' revival cost in mind.</li>
+<li><strong>No stealth or trap specialist.</strong> Nobody has Expertise in Perception. Move slowly in Act 2; take Perception proficiency on Shadowheart wherever the level-up offers it.</li>
+<li><strong>Concentration collisions.</strong> Minthara wants Haste, Shadowheart wants Hold Monster, and both want Darkness or Hypnotic Pattern. <strong>Default: Shadowheart holds the lock; Minthara selects one concentration spell based on the encounter.</strong> Casting Darkness, Haste, Shadow Blade or another concentration spell replaces her current concentration; she cannot maintain all of them.</li>
+<li><strong>Two seats need the same crit shards.</strong> Durge and Lae'zel both want <strong>crit-threshold</strong> and <strong>Critical strikes</strong>. Lae'zel gets first pick (she has the 19–20 window to widen); Durge takes the second set.</li>
+</ul>
+<h2>Difficulty dial (from the run charter §5b)</h2>
+<ul class="md">
+<li><strong>AMP runs on Casual</strong> (unlocked chests, merchant restock on rest, Pyre off) with <strong>merchant takeover disabled</strong>, so the AMP side of the difficulty is soft and <strong>gold buys gear</strong>.</li>
+<li>Start: <strong>Honour + Tactician Enhanced with enemy HP two steps up and enemy bonus actions +1</strong>, enemy actions <strong>OFF</strong>, Extra Encounters and Minibosses <strong>ON</strong>.</li>
+<li>Escalate one knob at a time: HP up → enemy actions +1. Bosses already have Legendary Actions; enemy actions is the real cliff.</li>
+<li><strong>Shopping is now part of the loop:</strong> merchants restock on long rest, so buy before resting, and never blind-sell uniques (they are disenchant dust).</li>
+</ul>
+<h2>Verify-in-game list (things this project refuses to invent)</h2>
+<ol class="md">
+<li><strong>Divine Smite on a conjured Shadow Blade</strong> (Minthara) — unverified. Test in a trash fight before building around it.</li>
+<li><strong>Split Enchantment on Hold Monster</strong> (Shadowheart) — unverified. Test on Hold Person at level 10 first.</li>
+<li><strong>Better Oathbreaker Summons</strong> — not yet in the 104-mod library; subscribe on PS5 and confirm the Console tag, or run base Oathbreaker.</li>
+<li><strong>Paladin and Oaths PHB2024 console tag</strong> — confirm in the in-game browser. Bonus-action Lay on Hands and Abjure Foe depend on it.</li>
+<li><strong>Every character level 13+</strong> — UnlockLevelCurve territory. Read what the level actually grants at the Training Ring; the build files say "verify" instead of naming a feature.</li>
+</ol>
+<h2>Current-level action map</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Character level</th>
+<th>Default expectation</th>
+<th>Do not assume yet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–4</td>
+<td>Basic attacks, low-level control and resource management</td>
+<td>Extra Attack, auras, high-level Hold spells or Quickened Spell</td>
+</tr>
+<tr>
+<td>5–8</td>
+<td>Fighter/Paladin Extra Attack; paladin auras at their class 6; Lae’zel’s curse at character 6</td>
+<td>Durge Action Surge, Minthara Counterspell or her Sorcerer 3 Darkness before character 9</td>
+</tr>
+<tr>
+<td>9–14</td>
+<td>Minthara gets Quickened at 9 and Counterspell at 11; Shadowheart’s Wizard progression drives control</td>
+<td>Durge Action Surge before 15; Lae’zel’s third attack before 15</td>
+</tr>
+<tr>
+<td>15–20</td>
+<td>Both martials can Action Surge; Lae’zel has three attacks per Attack action</td>
+<td>Unverified mod features or automatic encounter wins</td>
+</tr>
+</tbody>
+</table></div>
+<p>Aura of Hate is not a general summon buff: melee weapon use matters, and nearby enemy undead/fiends can benefit. Check a summon’s attack and combat log before counting it. Base references: https://bg3.wiki/wiki/Aura_of_Hate, https://bg3.wiki/wiki/Aura_of_Protection, https://bg3.wiki/wiki/Improved_Extra_Attack, https://bg3.wiki/wiki/Paralysed_(Condition).</p>
+</div>
+</section>
+
+</main>
+<footer>Bhaal Till You Fall - Party Guide &middot; assembled by tools/build-guide.py &middot; verified vs bg3.wiki + the AMP Guidebook</footer>
+</div>
+<script>
+(function(){
+  var btn=document.getElementById('toggleAll');
+  if(!btn) return;
+  var open=false;
+  btn.addEventListener('click',function(){
+    open=!open;
+    document.querySelectorAll('details.char').forEach(function(d){ d.open=open; });
+    btn.textContent = open ? 'Collapse all' : 'Expand all';
+  });
+})();
+</script>
+</body></html>

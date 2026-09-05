@@ -81,10 +81,10 @@ li::marker{color:var(--gold,#e8c265)}
 .minibtn:hover{box-shadow:0 0 14px rgba(232,194,101,.35)}
 </style>
 </head>
-<body>
+<body><nav aria-label="Companion links" style="max-width:1400px;margin:12px auto;padding:12px 20px;display:flex;gap:24px;flex-wrap:wrap"><a href="./companion/" style="color:#e4c78b">Open Bhaal Till You Fall companion</a><a href="./companion/party-guide.html" style="color:#e4c78b">Printable party guide</a></nav>
 <header class="hero"><div class="wrap">
   <h1>⚔️ BG3 Party Randomizer</h1>
-  <div class="sub">The Multiclass Vault, rolled live — 202 honour-viable builds · base or modded · level 12 or 20 · export a full themed guide to share.</div>
+  <div class="sub">The Multiclass Vault, rolled live — 202 build concepts with validated point-buy math · base or modded · level 12 or 20 · export a full themed guide to share.</div>
 </div></header>
 
 <div class="wrap">
@@ -136,7 +136,7 @@ li::marker{color:var(--gold,#e8c265)}
   <datalist id="charlist"><option>Tav (custom)</option><option>The Dark Urge</option><option>Lae'zel</option><option>Shadowheart</option><option>Astarion</option><option>Gale</option><option>Wyll</option><option>Karlach</option><option>Minthara</option><option>Halsin</option><option>Jaheira</option><option>Minsc</option></datalist>
 
   <footer>
-    Rolls from the Multiclass Vault (files 01–09). Full detail + the accuracy engine live in the <code>.md</code> files. Every build is honour-viable; verify modded classes' level 13+ at the Training Ring.<br>
+    Rolls from the Multiclass Vault (files 01–09). Full detail + the accuracy engine live in the <code>.md</code> files. Point-buy and party constraints are checked; combat viability is not certified. Verify modded classes' level 13+ at the Training Ring.<br>
     Extra Attack doesn't stack · honour multiclass prereqs · Pactbound ⊕ Dread Overlord · 5.5e off · AMP makes every build gear-agnostic.
   </footer>
   <div id="gmodal" onclick="if(event.target===this)this.classList.remove('show')"><div class="gbox"><div class="gbar"><button onclick="var f=document.getElementById('gframe');try{f.contentWindow.focus();f.contentWindow.print();}catch(e){window.print();}">🖨 Print this build</button><button onclick="document.getElementById('gmodal').classList.remove('show')">✕ Close</button></div><iframe id="gframe" title="Build guide"></iframe></div></div>
@@ -670,23 +670,15 @@ Mystic:"INT 17 (15+2) · CON 16 (15+1) · DEX 14 · WIS 10 · STR 8 · CHA 8",
 Duskblade:"INT 17 (15+2) · CON 16 (15+1) · DEX 14 · STR 10 · WIS 8 · CHA 8",
 Artificer:"INT 17 (15+2) · CON 16 (15+1) · DEX 14 · WIS 10 · STR 8 · CHA 8"};
 var ROLEFEAT={Frontline:"Great Weapon Master (Tavern Brawler for fists/throwers)",Tank:"Sentinel or Tough",Gish:"War Caster",Rogue:"Alert (act first)",Caster:"War Caster",Summoner:"War Caster",Support:"Lucky / War Caster",Ranged:"Sharpshooter"};
-// ---- Multiclass prerequisite engine (honour: need 13 in EACH class's key stat) ----
+// ---- BG3 point-buy engine; no vanilla multiclass ability-score gates ----
 var PB={8:0,9:1,10:2,11:3,12:4,13:5,14:7,15:9}; // point-buy costs
 var BASECLASS={Barbarian:["STR"],Fighter:["F"],Monk:["DEX","WIS"],Paladin:["STR","CHA"],Ranger:["DEX","WIS"],Rogue:["DEX"],Bard:["CHA"],Cleric:["WIS"],Druid:["WIS"],Sorcerer:["CHA"],Warlock:["CHA"],Wizard:["INT"],"Blood Mage":["CON"],Mystic:["INT"],Duskblade:["INT"],Artificer:["INT"]};
 // flavour/subclass tokens that hide the base class in a split segment
 var SUBMAP={"Blood Reaver":"Blood Mage","Blood Knight":"Blood Mage","Blood Magus":"Blood Mage","Blood-Boiled":"Blood Mage","Dread Overlord":"Warlock","Pactbound":"Warlock","Hexblade":"Warlock","Divine Soul":"Sorcerer","Aberrant Mind":"Sorcerer","Clockwork":"Sorcerer","Lunar":"Sorcerer","Wretched Soul":"Sorcerer","Phantom":"Rogue","Soulknife":"Rogue","Soul Knife":"Rogue","Swashbuckler":"Rogue","Inquisitive":"Rogue","Mastermind":"Rogue","Scout":"Rogue"};
 var STATORDER=["STR","DEX","CON","INT","WIS","CHA"];
-function reqStats(b){
-  var segs=(b.s20||"").split("/"), req={};
-  function add(a){a.forEach(function(s){req[s]=1;});}
-  add(BASECLASS[b.cl]||[]);
-  segs.forEach(function(seg){
-    var hit=false;
-    for(var cls in BASECLASS){ if(new RegExp("\\b"+cls.replace(/ /g,"\\s")+"\\b","i").test(seg)){ add(BASECLASS[cls]); hit=true; } }
-    if(!hit){ for(var tok in SUBMAP){ if(new RegExp(tok.replace(/[-\s]/g,"[-\\s]"),"i").test(seg)){ add(BASECLASS[SUBMAP[tok]]); break; } } }
-  });
-  return req;
-}
+// Base BG3, including Honour, has no ability-score gate for multiclassing.
+// A mod-specific prerequisite needs its own verified rule; do not infer tabletop rules.
+function reqStats(b){return {};}
 function baseSpread(b){ // pre-racial point-buy map parsed from the curated string
   var src=(b.r==="Ranged"&&b.cl!=="Warlock"&&b.cl!=="Artificer")
     ? "DEX 17 (15+2) · CON 16 (15+1) · WIS 12 · INT 10 · STR 8 · CHA 8"
@@ -697,58 +689,50 @@ function baseSpread(b){ // pre-racial point-buy map parsed from the curated stri
   return base;
 }
 function isArcherDex(b){return b.r==="Ranged"&&b.cl!=="Warlock"&&b.cl!=="Artificer";}
-function spreadFor(b){ // returns {base, prim, gates, tight}
-  // archers attack with DEX even when the class is CHA/STR/WIS-based; the class's own stat then becomes a 13 gate
-  var prim=isArcherDex(b)?"DEX":(PRIMARY[b.cl]||"STR");
-  var base=baseSpread(b), req=reqStats(b), gates={}, tight=false;
-  Object.keys(req).forEach(function(s){
-    if(s==="F"){ if(!(prim==="STR"||prim==="DEX")&&base.STR<13&&base.DEX<13) gates.DEX=1; }
-    else if(s!==prim) gates[s]=1;
-  });
-  // raise each gate stat to 13, reclaiming points from the lowest dump stat to hold 27-point buy
-  Object.keys(gates).forEach(function(g){
-    if(base[g]>=13) return;
-    var need=PB[13]-PB[base[g]]; base[g]=13;
-    while(need>0){
-      var d=null;
-      STATORDER.forEach(function(s){ if(s!==prim&&s!==g&&s!=="CON"&&!gates[s]&&base[s]>8&&(d===null||base[s]<base[d])) d=s; });
-      if(d===null){ STATORDER.forEach(function(s){ if(s!==prim&&!gates[s]&&base[s]>8&&(d===null||base[s]<base[d])) d=s; }); } // last resort: tap CON
-      if(d===null){ tight=true; break; }
-      var gain=PB[base[d]]-PB[base[d]-1]; base[d]--; need-=gain;
-    }
-  });
-  return {base:base,prim:prim,gates:Object.keys(gates),tight:tight};
+function spreadFor(b){
+  var prim=isArcherDex(b)?"DEX":(PRIMARY[b.cl]||"STR"),base=baseSpread(b);
+  var secondary={Paladin:'CHA',Monk:'WIS',Ranger:'WIS',Rogue:'DEX',Bard:'DEX',Cleric:'WIS',Druid:'WIS'}[b.cl]||'DEX';
+  var priority=Array.from(new Set([prim,'CON',secondary,'DEX','WIS','CHA','STR','INT']));
+  var cost=function(){return STATORDER.reduce(function(n,k){return n+PB[base[k]]},0)};
+  if(STATORDER.some(function(k){return !Number.isInteger(base[k])||base[k]<8||base[k]>15}))throw Error('Invalid curated point-buy seed: '+b.c);
+  while(cost()>27){var lower=priority.slice().reverse().find(function(k){return base[k]>8});if(!lower)throw Error('Cannot fit point buy');base[lower]--;}
+  while(cost()<27){var left=27-cost(),raise=priority.find(function(k){return base[k]<15&&PB[base[k]+1]-PB[base[k]]<=left});if(!raise)throw Error('Cannot spend remaining point buy');base[raise]++;}
+  return {base:base,prim:prim,gates:[],tight:false};
 }
 function statArray(b){
   var sp=spreadFor(b), base=sp.base, disp={}; STATORDER.forEach(function(s){disp[s]=base[s];});
   disp[sp.prim]+=2; if(sp.prim!=="CON")disp.CON+=1; else if(sp.gates[0])disp[sp.gates[0]]+=1; else disp.STR+=1;
   return STATORDER.map(function(s){var add=disp[s]-base[s];return s+" "+disp[s]+(add?" ("+base[s]+"+"+add+")":"");}).join(" · ");
 }
-function mcGateNote(b){
-  var sp=spreadFor(b); if(!sp.gates.length) return "";
-  return " <b style='color:#f4dd9a'>Multiclass gate:</b> needs <b>"+sp.gates.map(function(g){return g+" 13";}).join(" + ")+"</b> to legally take the dip"+(sp.tight?" — tight on 27-point buy, shave the primary to 15 if needed":"")+".";}
-function asiPlan(b,L){var P=PRIMARY[b.cl]||"primary";if(b.r==="Ranged"&&b.cl!=="Warlock"&&b.cl!=="Artificer")P="DEX";var feat=ROLEFEAT[b.r]||"a power feat";var s;
- if(b.cl==="Paladin"){s="<b>L4 ASI:</b> +2 STR (15+2 → <b>19</b>, to-hit + Smite). <b>L8:</b> +1 STR → <b>20</b> and +1 CHA (aura/DC), <i>or</i> Great Weapon Master. <b>L12:</b> the other of GWM / +2 CHA → 18+.";}
- else if(P==="CON"&&b.cl==="Blood Mage"){s="<b>L4 ASI:</b> +2 CON (15+2 → <b>19</b> — DC, HP <i>and</i> concentration in one stat). <b>L8:</b> +1 CON → <b>20</b> + War Caster. <b>L12:</b> Tough or Resilient (CON already huge, so a defensive/utility feat).";}
- else{s="<b>L4 ASI:</b> +2 "+P+" (15+2 racial → 17, this → <b>19</b>). <b>L8:</b> +1 "+P+" → <b>20</b> (spare point to CON), <i>or</i> take <b>"+feat+"</b> and cap "+P+" later via a half-feat. <b>L12:</b> "+(b.r==="Caster"||b.r==="Gish"||b.r==="Summoner"||b.r==="Support"?"War Caster + Resilient (CON) for rock-solid concentration":feat+", then Alert");}
- if(L==="20")s+=" <b>L16 / L19:</b> finish the second key feat + <b>Lucky</b> or <b>Alert</b>.";
- return s;}
+function mcGateNote(b){return " <b>Rules check:</b> Base BG3 has no multiclass ability-score prerequisites. Verify any added mod restriction in-game.";}
+function asiPlan(b,L){var P=spreadFor(b).prim,feat=ROLEFEAT[b.r]||'a relevant feat';return '<b>Feat choices follow class levels, not character levels.</b> Base classes normally offer a choice at class 4, 8 and 12; Fighter also at 6, Rogue at 10. Modded classes and levels 13–20 require the actual progression screen. At each offered choice, take <b>one</b> feat: Ability Improvement (+2 to one ability or +1 to two, normally capped at 20), or a named feat. For this seed, prioritise '+P+' and concentration/defence as needed; '+feat+' is an alternative, not a free extra pick. Do not spend an ASI above its cap or assume a permanent story reward. Recalculate after each confirmed choice.';}
 
 // ====== STATE ======
 var LS="bg3-randomizer-v2";
 var state={size:6,level:"20",profile:"full",gear:"amp",packs:{},noDupBuild:true,noDupClass:false,balance:false,randChars:false,seats:[]};
 Object.keys(PACKS).forEach(function(k){state.packs[k]=true;});
-try{var sv=JSON.parse(localStorage.getItem(LS));if(sv)Object.assign(state,sv);}catch(e){}
-if(!state.seats)state.seats=[];
-// share via hash
-(function(){try{if(location.hash.length>3){var d=JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1)))));if(d&&d.seats){state.size=d.z;state.level=d.l;state.profile=d.pr;state.packs=d.pk||state.packs;state.seats=d.seats.map(function(x){return {name:x.n,locked:false,roleLock:"",build:byCode(x.b)};});state.pname=d.p||"";}}}catch(e){}})();
+function validatedState(value){
+ if(!value||typeof value!=='object'||Array.isArray(value))throw Error('Party save must be an object');
+ var next={};
+ if(value.size!==undefined){if(!Number.isInteger(value.size)||value.size<1||value.size>16)throw Error('Party size must be 1–16');next.size=value.size;}
+ ['level','profile','gear'].forEach(function(k){var allowed={level:['12','20'],profile:['base','full','custom'],gear:['amp','noamp']}[k];if(value[k]!==undefined){if(!allowed.includes(value[k]))throw Error('Invalid '+k);next[k]=value[k];}});
+ ['noDupBuild','noDupClass','balance','randChars'].forEach(function(k){if(value[k]!==undefined){if(typeof value[k]!=='boolean')throw Error('Invalid '+k);next[k]=value[k];}});
+ if(value.pname!==undefined){if(typeof value.pname!=='string'||value.pname.length>200)throw Error('Invalid party name');next.pname=value.pname;}
+ if(value.packs!==undefined){if(!value.packs||typeof value.packs!=='object'||Array.isArray(value.packs))throw Error('Invalid packs');next.packs={};Object.keys(PACKS).forEach(function(k){next.packs[k]=value.packs[k]===true;});}
+ if(value.seats!==undefined){if(!Array.isArray(value.seats)||value.seats.length>16)throw Error('Invalid seats');next.seats=value.seats.map(function(x){if(!x||typeof x!=='object'||typeof x.name!=='string'||x.name.length>200)throw Error('Invalid seat');if(x.roleLock&&!ROLES.includes(x.roleLock))throw Error('Invalid role lock');var b=x.build?byCode(x.build.c):null;if(x.build&&!b)throw Error('Unknown build code');return {name:x.name,locked:x.locked===true,roleLock:x.roleLock||'',build:b};});}
+ return next;
+}
+var stateLoadError='';
+try{var saved=localStorage.getItem(LS);if(saved){if(saved.length>1000000)throw Error('Party save too large');Object.assign(state,validatedState(JSON.parse(saved)));}}catch(e){stateLoadError='Saved party was not loaded: '+e.message;console.warn(stateLoadError);}
+// Validate the whole shared snapshot before applying any field.
+(function(){try{if(typeof location!=='undefined'&&location.hash.length>3){if(location.hash.length>100000)throw Error('Share link too large');var d=JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1)))));if(!Array.isArray(d.seats))throw Error('Invalid shared seats');var incoming={size:d.z,level:d.l,profile:d.pr,packs:d.pk||state.packs,pname:d.p||'',seats:d.seats.map(function(x){return {name:x.n,locked:false,roleLock:'',build:x.b?{c:x.b}:null};})};Object.assign(state,validatedState(incoming));}}catch(e){stateLoadError='Shared party was not loaded: '+e.message;console.warn(stateLoadError);}})();
 function byCode(c){return BUILDS.filter(function(b){return b.c===c;})[0];}
 function splitFor(b){return state.level==="12"?b.s12:b.s20;}
 
 function activePool(){return BUILDS.filter(function(b){if(state.profile==="base")return b.p.length===0;if(state.profile==="full")return true;return b.p.every(function(pk){return state.packs[pk];});});}
 function rnd(a){return a[Math.floor(Math.random()*a.length)];}
 function rollFrom(pool,used,dupB,dupC){var c=pool.filter(function(b){if(dupB&&used.builds.has(b.c))return false;if(dupC&&used.classes.has(b.cl))return false;return true;});return c.length?rnd(c):null;}
-function poolForSeat(i){var pool=activePool();var s=state.seats[i];if(s&&s.roleLock){var sub=pool.filter(function(b){return b.r===s.roleLock;});if(sub.length)return sub;}return pool;}
+function poolForSeat(i){var pool=activePool();var s=state.seats[i];if(s&&s.roleLock){var sub=pool.filter(function(b){return b.r===s.roleLock;});return sub;}return pool;}
 
 function partyName(){
   var seats=state.seats.slice(0,state.size).filter(function(s){return s&&s.build;});
@@ -772,35 +756,53 @@ function partyName(){
 // Pactbound ⊕ Dread Overlord — only ONE warlock identity per run (hard load-order rule)
 function warlockId(b){return b.p.indexOf("dreadoverlord")>=0?"dreadoverlord":(b.p.indexOf("pactbound")>=0?"pactbound":null);}
 function idClash(b,id){var w=warlockId(b);return !!(id&&w&&w!==id);}
-function noClash(lp,id){if(!id)return lp;var f=lp.filter(function(b){return !idClash(b,id);});return f.length?f:lp;}
+function noClash(lp,id){if(!id)return lp;var f=lp.filter(function(b){return !idClash(b,id);});return f;}
 function curIdentity(skip){var id=null;for(var k=0;k<state.size;k++){if(k===skip)continue;var s=state.seats[k];if(s&&s.build){var w=warlockId(s.build);if(w)id=w;}}return id;}
-function randomizeAll(){
-  var pool=activePool();var note="";
-  if(!pool.length){setNote("No builds match this pool — enable a pack or switch profile.");return;}
-  if(state.randChars){var pf=COMPANIONS.slice(),nm=[];for(var i=0;i<state.size;i++){if(pf.length){nm.push(pf.splice(Math.floor(Math.random()*pf.length),1)[0]);}else nm.push("Tav "+(i-COMPANIONS.length+1));}for(var i=0;i<state.size;i++){if(!state.seats[i])state.seats[i]={};state.seats[i].name=nm[i];}}
-  var used={builds:new Set(),classes:new Set()},miss=0,missC=0,idUsed=null;
-  for(var i=0;i<state.size;i++){var s=state.seats[i];if(s&&s.locked&&s.build){used.builds.add(s.build.c);used.classes.add(s.build.cl);if(warlockId(s.build))idUsed=warlockId(s.build);}}
-  for(var i=0;i<state.size;i++){
-    var s=state.seats[i]||(state.seats[i]={});if(s.locked&&s.build)continue;
-    var lp=pool;
-    if(state.balance&&!s.roleLock){var cov=new Set();state.seats.slice(0,state.size).forEach(function(x){if(x&&x.build)cov.add(x.build.r);});var want=BAL.find(function(r){return !cov.has(r);});if(want){var sub=pool.filter(function(b){return b.r===want;});if(sub.length)lp=sub;}}
-    else if(s.roleLock){var sub=pool.filter(function(b){return b.r===s.roleLock;});if(sub.length)lp=sub;}
-    lp=noClash(lp,idUsed);
-    var b=rollFrom(lp,used,state.noDupBuild,state.noDupClass);
-    if(!b&&state.noDupClass){b=rollFrom(lp,used,state.noDupBuild,false);if(b)missC++;}
-    if(!b){b=rollFrom(lp,used,false,false);if(b)miss++;}
-    if(!b)b=rnd(lp);
-    s.build=b;used.builds.add(b.c);used.classes.add(b.cl);if(warlockId(b))idUsed=warlockId(b);
+// Bounded backtracking: locks, role locks, pack conflicts and duplicate bans
+// are hard constraints. Role balance is a preference, never a reason to break one.
+function solveParty(pool,seats,options,rng){
+  rng=rng||Math.random;
+  var chosen=seats.map(function(s){return s&&s.locked?s.build||null:null;}),steps=0,limit=50000;
+  function fits(b,i){
+    if(!b||!pool.some(function(x){return x.c===b.c;}))return false;
+    if(seats[i]&&seats[i].roleLock&&seats[i].roleLock!==b.r)return false;
+    return chosen.every(function(x,j){return !x||j===i||
+      (!(options.noDupBuild&&x.c===b.c)&&!(options.noDupClass&&x.cl===b.cl)&&!idClash(b,warlockId(x)));});
   }
-  note=missC>0?"⚠ Not enough distinct classes for "+state.size+" seats — some repeat.":(miss>0?"⚠ Pool smaller than party size — some builds repeat.":"");
-  state.pname=partyName();setNote(note);save();render();
+  for(var i=0;i<chosen.length;i++)if(chosen[i]&&!fits(chosen[i],i))return {error:'Locked seats conflict with your selected packs, roles or duplicate rules. Unlock or change a constraint; the current party was preserved.'};
+  function search(){
+    if(++steps>limit)return false;
+    var next=-1,candidates=null;
+    for(var i=0;i<chosen.length;i++)if(!chosen[i]){
+      var allowed=pool.filter(function(b){return fits(b,i);});
+      if(!allowed.length)return false;
+      if(candidates===null||allowed.length<candidates.length){next=i;candidates=allowed;}
+    }
+    if(next===-1)return true;
+    for(var k=candidates.length-1;k>0;k--){var j=Math.floor(rng()*(k+1)),tmp=candidates[k];candidates[k]=candidates[j];candidates[j]=tmp;}
+    if(options.balance){var covered=new Set(chosen.filter(Boolean).map(function(b){return b.r;}));candidates.sort(function(a,b){return Number(covered.has(a.r))-Number(covered.has(b.r));});}
+    for(var b of candidates){chosen[next]=b;if(search())return true;chosen[next]=null;if(steps>limit)return false;}
+    return false;
+  }
+  return search()?{builds:chosen,steps:steps}:{error:steps>limit?'Search limit reached. Narrow the pool or unlock a seat; no party was changed.':'No party satisfies these packs, locks and duplicate rules. Change a constraint explicitly; no party was changed.'};
 }
-function rerollSeat(i){var used={builds:new Set(),classes:new Set()};for(var j=0;j<state.size;j++){if(j!==i){var s=state.seats[j];if(s&&s.build){used.builds.add(s.build.c);used.classes.add(s.build.cl);}}}var lp=noClash(poolForSeat(i),curIdentity(i));var b=rollFrom(lp,used,state.noDupBuild,state.noDupClass)||rollFrom(lp,used,false,false)||rnd(lp);state.seats[i].build=b;save();render();}
+function randomizeAll(){
+  var seats=Array.from({length:state.size},function(_,i){return state.seats[i]||{};}),result=solveParty(activePool(),seats,state);
+  if(result.error){setNote(result.error);return;}
+  var names=COMPANIONS.filter(function(n){return !seats.some(function(s){return s.locked&&s.name===n;});});
+  state.seats=seats.map(function(s,i){var next=Object.assign({},s,{build:result.builds[i]});if(state.randChars&&!s.locked)next.name=names.length?names.splice(Math.floor(Math.random()*names.length),1)[0]:'Tav '+(i+1);return next;});
+  state.pname=partyName();save();render();setNote('Party generated: pack selection, locked seats, role locks and enabled duplicate bans respected. Role balance is a preference; verify build mechanics and mod versions before committing a save.');
+}
+function rerollSeat(i){
+  var seats=state.seats.slice(0,state.size).map(function(s,j){return Object.assign({},s,{locked:j!==i});}),result=solveParty(activePool(),seats,state);
+  if(result.error){setNote(result.error);return;}
+  state.seats[i].build=result.builds[i];save();render();setNote('Seat rerolled without relaxing party constraints.');
+}
 
 // ====== RENDER (main app) ======
 function setNote(t){document.getElementById("note").textContent=t;}
 function esc(t){return(""+t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-function save(){try{localStorage.setItem(LS,JSON.stringify({size:state.size,level:state.level,profile:state.profile,packs:state.packs,noDupBuild:state.noDupBuild,noDupClass:state.noDupClass,balance:state.balance,randChars:state.randChars,pname:state.pname,seats:state.seats.slice(0,state.size).map(function(s){return{name:s.name,locked:s.locked,roleLock:s.roleLock,build:s.build?{c:s.build.c}:null};})}));}catch(e){}}
+function save(){try{localStorage.setItem(LS,JSON.stringify({size:state.size,level:state.level,profile:state.profile,gear:state.gear,packs:state.packs,noDupBuild:state.noDupBuild,noDupClass:state.noDupClass,balance:state.balance,randChars:state.randChars,pname:state.pname,seats:state.seats.slice(0,state.size).map(function(s){return{name:s.name,locked:s.locked,roleLock:s.roleLock,build:s.build?{c:s.build.c}:null};})}));}catch(e){}}
 function hydrate(){state.seats=state.seats.map(function(s){if(s&&s.build&&!s.build.n)s.build=byCode(s.build.c);return s;});}
 
 function render(){
@@ -902,7 +904,7 @@ function guideHTML(onlyIndex){
             ? '<tr><td class="k">Level 20 build</td><td>'+esc(b.s20)+'</td></tr><tr><td class="k muted">Level 12 version</td><td class="muted">'+esc(b.s12)+'</td></tr>'
             : '<tr><td class="k">Level 12 build</td><td>'+esc(b.s12)+'</td></tr><tr><td class="k muted">If you uncap to 20</td><td class="muted">'+esc(b.s20)+'</td></tr>')+
         '</table>'+
-        '<h4>Starting stats — 27-point buy</h4><p>'+statArray(b)+mcGateNote(b)+' <span class="muted">(priority: '+esc(stat)+'; put your floating racial +2 on the primary, +1 on CON, and clear any 13+ multiclass prereq first).</span></p>'+
+        '<h4>Starting stats — 27-point buy</h4><p>'+statArray(b)+mcGateNote(b)+' <span class="muted">(priority: '+esc(stat)+'; put your floating racial +2 on the primary, +1 on CON, with no tabletop multiclass stat gates).</span></p>'+
         '<h4>ASIs &amp; feats — exactly what to bump</h4><p>'+asiPlan(b,L)+'</p>'+
         '<h4>Power curve — what each bracket unlocks</h4><ul class="brk">'+brkList+'</ul>'+
         (rich.lp?'<h4>Level path — key picks</h4><table><tr><th>Level</th><th>Take</th></tr>'+lpRows+'</table>':'')+
@@ -941,7 +943,7 @@ function guideHTML(onlyIndex){
     "<header><div class='wrap'><h1>⚔️ "+esc(state.pname||"The Rolled Party")+"</h1><div class='sub'>A "+state.size+"-seat honour party · Level "+L+" · generated from the Multiclass Vault</div>"+
     "<div class='meta'><span class='chip'><b>Seats:</b> "+state.size+"</span><span class='chip'><b>Cap:</b> Level "+L+"</span><span class='chip'><b>Pool:</b> "+(state.profile==="base"?"Base only":(state.profile==="full"?"Full (mods)":"Custom"))+"</span><span class='chip'><b>Roles:</b> "+coverage+"</span></div></div></header>"+
     "<div class='wrap'><div class='lvlbanner'>📘 This guide is built for a <b>Level "+L+"</b> party"+(L==="12"?" (vanilla cap). Each card shows the Level-20 version in grey if you ever uncap.":" (UnlockLevelCurve). Each card shows the Level-12 version in grey too.")+"</div><div class='toggle' onclick=\"document.querySelectorAll('.cbody').forEach(function(x){x.classList.toggle('collapsed')})\">▼ expand / collapse all</div>"+rotationHTML+body+mechHTML+
-    "<footer>Generated by the BG3 Party Randomizer · builds from the Multiclass Vault · every build is honour-viable &amp; gear-agnostic (AMP).<br>Extra Attack doesn't stack · honour multiclass prereqs apply · verify modded classes' L13+ in-game.</footer></div></body></html>";
+    "<footer>Generated by the BG3 Party Randomizer · builds from the Multiclass Vault · point-buy validated; exact mod compatibility and combat viability require in-game checks.<br>Extra Attack doesn't stack · no base-game multiclass ability prerequisites · verify modded classes' L13+ in-game.</footer></div></body></html>";
   return doc;
 }
 function downloadGuide(){
@@ -964,7 +966,7 @@ document.getElementById("linkBtn").onclick=function(){var l=shareLink();history.
 document.getElementById("textBtn").onclick=function(){copy(partyText(),"📋 Party copied as text — paste into Discord/chat.");};
 function openModal(i){var s=state.seats[i];if(!s||!s.build)return;document.getElementById("gframe").srcdoc=guideHTML(i);document.getElementById("gmodal").classList.add("show");}
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){var m=document.getElementById("gmodal");if(m)m.classList.remove("show");}});
-hydrate();renderPacks();render();
+hydrate();renderPacks();render();if(stateLoadError)setNote(stateLoadError+". The saved record was preserved; rolling a new party replaces it.");
 </script>
 </body>
 </html>
