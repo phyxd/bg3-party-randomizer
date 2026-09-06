@@ -1,0 +1,975 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Last Laugh - Full Playthrough</title><style>*{box-sizing:border-box}body{margin:0;background:#101521;color:#e6e9ef;font:17px/1.65 system-ui,Segoe UI,sans-serif}main{max-width:1160px;margin:auto;padding:48px 28px 90px}h1{font-size:clamp(2.2rem,5vw,3.5rem);line-height:1.12;color:#ecd3a0;max-width:22ch}h2{margin-top:2.5em;color:#ecd3a0;font-size:1.55rem;border-top:1px solid #394151;padding-top:1.1em}p,li{max-width:95ch}a{color:#91c9f2;text-underline-offset:4px}li{margin:.45em 0}table{border-collapse:collapse;width:100%;font-size:.91rem;margin:24px 0}th{text-align:left;background:#273144;color:#efdaaf}td,th{padding:13px 15px;border:1px solid #3c4555;vertical-align:top}tr:nth-child(even){background:#192130}code{font: .85em Consolas,monospace;color:#c6dbee;overflow-wrap:anywhere}pre{padding:16px;background:#192130;overflow:auto}nav{display:flex;gap:20px;flex-wrap:wrap;background:#1b2536;padding:18px 24px;border-radius:10px;margin-bottom:32px}.scroll{overflow:auto}footer{margin-top:60px;color:#a9b4c9;font-size:.85rem}@media(max-width:650px){main{padding:24px 16px}table{min-width:650px}.scroll{overflow-x:auto}h2{font-size:1.3rem}}@media print{body{background:white;color:black}a{color:#174e73}main{padding:0}h1,h2{color:#222}nav{display:none}table{font-size:10pt}th{background:#eee;color:black}tr:nth-child(even){background:#fafafa}}</style><main><nav><a href="./index.html">Open companion</a><a href="#party-and-stand-in">Party</a><a href="#act-1-build-the-engine-before-taking-the-hard-fights">Act 1</a><a href="#act-2-secure-the-roster-before-closing-the-map">Act 2</a><a href="#act-3-finish-deliberately">Act 3</a></nav><h1 id="the-last-laugh">The Last Laugh</h1>
+<h2 id="dark-urge-four-seats-honour-ps5-level-20-amp">Dark Urge · four seats · Honour · PS5 · level 20 · AMP</h2>
+<h2 id="the-premise">The premise</h2>
+<ul>
+<li>You are the charming problem everyone should have killed in Act 1. The party wins through control, ranged focus fire, unarmed disruption and a recovery plan.</li>
+<li>This is a <strong>curated test playthrough</strong>, not a claim that a blind random roll found the strongest possible party.</li>
+<li>Default story: evil Durge, retaining Minthara, Shadowheart and Lae'zel. This carries forward the active run's preference. Story spoilers appear below.</li>
+<li>Light Cleric is Shadowheart's combat respec; it does not force a deity or story outcome. Race and background remain fixed for companions.</li>
+<li>Four new catalog variants: N1–N4. They are rules-checked, not yet playtested in your installed PS5 setup.</li>
+</ul>
+<h2 id="launch-setup">Launch setup</h2>
+<ol>
+<li>Start a <strong>new campaign</strong>. Keep Bhaal Till You Fall and its exported JSON intact.</li>
+<li>Create a Half-Drow Dark Urge, Bard. Use the exact Durge creation spread and skill choices in the character chapter. Appearance and name are yours.</li>
+<li>Freeze and record the enabled PS5 mod list and versions. Required: Patch 8, total-level-20 extension and AMP. The builds need no added class pack. If an existing mod overrides a core class, test that override before relying on these paths.</li>
+<li>Keep Blood Mage, Pactbound, cheat Slayer gear and unlimited-Strength-elixir assumptions out of this profile. Do not uninstall dependencies from an existing save to imitate it.</li>
+<li>Start AMP at the preferred Casual setting with merchant takeover disabled, carried forward from Run 2. Add difficulty only after seeing real combat results. No simultaneous jump in enemy actions, initiative rules and encounter count.</li>
+<li>Use the Training Ring or a disposable test save to inspect all four class paths through total level 20, attack counts, spell slots and item interactions. A passing JavaScript test cannot establish PS5 mod compatibility.</li>
+<li>In the new companion, record observed scores after creation bonuses. The initial displayed spread is the 27-point base, not your final character sheet.</li>
+</ol>
+<h2 id="party-and-stand-in">Party and stand-in</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Seat</th>
+<th>Assignment</th>
+<th>Primary job</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Durge</td>
+<td>Swords Bard 10 / Oathbreaker 2 / Draconic Sorcerer 8</td>
+<td>Face, control and selective smite burst</td>
+</tr>
+<tr>
+<td>Minthara</td>
+<td>Battle Master 12 / Thief 4 / Gloom Stalker 4</td>
+<td>Ranged priority-target removal</td>
+</tr>
+<tr>
+<td>Shadowheart</td>
+<td>Light Cleric 12 / Stars Druid 8</td>
+<td>Area pressure, defensive reactions and recovery</td>
+</tr>
+<tr>
+<td>Lae'zel</td>
+<td>Open Hand 12 / Thief 4 / Battle Master 4</td>
+<td>Mobile melee control without elixir dependence</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>Use Astarion in the ranged seat until Minthara joins in Act 2. Withers can respec his class and abilities; he retains his own race/background.</li>
+<li>When Minthara joins, apply the ranged guide through her current level and move the ranged equipment. This is a roster change, not a second copy of the gear.</li>
+<li>Minthara cannot permanently join during Act 1. The evil recruitment route requires her survival and the Moonrise rescue sequence. See <a href="https://bg3.wiki/wiki/Minthara">Minthara recruitment</a>.</li>
+</ul>
+<h2 id="act-1-build-the-engine-before-taking-the-hard-fights">Act 1: build the engine before taking the hard fights</h2>
+<ol>
+<li>On the Nautiloid, prioritize reaching the helm alive. Optional boss loot is not a build requirement, especially with randomized rewards.</li>
+<li>Recruit Shadowheart, Lae'zel and Astarion. Reach Withers and assign the intended classes when possible. Gather ordinary armour, a finesse weapon/shield for Durge, a bow for the ranged seat and clothing for the Monk.</li>
+<li>Explore the Grove and surrounding accessible areas before committing to its outcome. Do available trading and side content first. The evil route deliberately loses some allies, vendors and quests; the guide does not budget their later rewards.</li>
+<li>Resolve the goblin/grove plot in Minthara's favour for this default route. Keep her alive. This is irreversible story commitment, not an optimization trick.</li>
+<li>Explore the Blighted Village and safer wilderness encounters; approach gnolls, the swamp/hag and gith patrol only after checking resources and escape routes. Avoid treating the XP path as a fixed level timetable because the extension and XP mods change it.</li>
+<li>Complete desired Underdark content and assess Grymforge separately. The forge boss is optional risk; no fixed mould or named item is required for this party.</li>
+<li>Before the Mountain Pass transition, finish the Act 1 quests you intend to retain. Read the in-game transition warning. Explore the monastery/crèche when the party has its core attacks and control, keeping Lae'zel's story consequences deliberate.</li>
+<li>Review gear and record one lesson before entering the Shadow-Cursed Lands. Finish accessible Act 1 tasks before the later Shadowfell lockout.</li>
+</ol>
+<h3 id="act-1-combat-check">Act 1 combat check</h3>
+<ul>
+<li>Ranged seat reaches Fighter 5 for two attacks; Monk reaches Monk 5 for two attacks and stun attempts. Durge reaches Bard 6 for Extra Attack. Shadowheart reaches Cleric 5 for Spirit Guardians.</li>
+<li>Do not dip early just to resemble the endpoint. These core unlocks matter more than collecting class names.</li>
+<li>No surprise round, permanent advantage or legendary drop is assumed. If a control spell fails, move to focus fire and recovery rather than spending the whole party repeating it.</li>
+</ul>
+<h2 id="act-2-secure-the-roster-before-closing-the-map">Act 2: secure the roster before closing the map</h2>
+<ol>
+<li>Obtain protection appropriate to the current shadow-curse depth. Ordinary light is not a promise of protection everywhere; inspect conditions before travelling.</li>
+<li>Visit Moonrise while you can still interact rather than treating it as a final-dungeon-only location. Rescue and recruit Minthara, then transfer the ranged seat.</li>
+<li>Complete desired tower, prison and regional business before entering the Shadowfell. That transition cuts off Act 1 and advances unfinished content. See <a href="https://bg3.wiki/wiki/Shadowfell">Shadowfell consequences</a>.</li>
+<li>Explore Reithwin's encounters and the Gauntlet in an order your current resources support. Dialogue is a tool, not an assumption that every dangerous encounter can be bypassed.</li>
+<li>Decide Shadowheart's Nightsong outcome explicitly. An evil route can accept severe ally/content losses; the Light-domain respec does not protect anyone from story consequences. Do not promise a full allied endgame roster after sacrificing it.</li>
+<li>Before the Moonrise finale, prepare recovery, mobility and non-concentration damage. Choose a concentration job for each caster. Refill short-rest resources and confirm actual consumables.</li>
+<li>For Ketheric/Myrkul, inspect the current encounter's mechanics and legendary actions. Keep recovery and ranged pressure available, clear dangerous supporting enemies, and avoid clumping everyone where movement or healing is constrained.</li>
+</ol>
+<h2 id="act-3-finish-deliberately">Act 3: finish deliberately</h2>
+<ol>
+<li>Establish access through Rivington and the city, review the journal and identify the required Netherstone path. Do not start every optional boss chain at once.</li>
+<li>Resolve companion commitments deliberately: Lae'zel's loyalty and the Orpheus/Emperor decision, Shadowheart's remaining story, and Durge's confrontation with Orin. They affect the ending more than a small item-score upgrade.</li>
+<li>Before committing to Orin, prepare Durge to function without assuming the other three can immediately solve the encounter. Confirm dialogue/duel conditions, immunity, escape options and usable resources for the chosen story branch.</li>
+<li>Treat Gortash, the Foundry and associated rescue consequences as a linked decision. Check active quest objectives before hostile actions; there is no universal safe order after every possible alliance or rescue choice.</li>
+<li>Optional fights such as Raphael or Ansur are content goals, not mandatory gear shopping. Attempt them after a dedicated boss brief and a clear reason to accept the Honour risk. Randomized loot invalidates guaranteed named-item shopping lists.</li>
+<li>Before the Morphic Pool, complete desired side quests, allocate every important item, spend planned crafting materials, respec if necessary, rest and carry what you need. This is a point of no return with no normal return to camp. See <a href="https://bg3.wiki/wiki/Morphic_Pool">Morphic Pool</a>.</li>
+<li>In the finale, prioritize objectives and route safety over killing everything. Use allies you actually retained. Save burst for the phases that need it and follow current encounter tooltips for immunities and platform hazards.</li>
+<li>Choose the final Durge/Netherbrain outcome as a story decision. The party's mechanics do not require taking a specific ending.</li>
+</ol>
+<h2 id="one-screen-encounter-plan">One-screen encounter plan</h2>
+<ol>
+<li><strong>Threat:</strong> which enemy action must not happen next?</li>
+<li><strong>Control:</strong> what is susceptible, and which caster owns concentration?</li>
+<li><strong>Kill:</strong> who finishes that target, and does the order actually work at this initiative?</li>
+<li><strong>Recovery:</strong> who can stand up an ally without losing the whole plan?</li>
+<li><strong>Exit:</strong> what is the retreat or recovery route if the first control attempt fails?</li>
+</ol>
+<h2 id="amp-priorities-and-budget">AMP priorities and budget</h2>
+<ul>
+<li>Keep a usable kit on all four seats before spending everything on one legendary branch.</li>
+<li>First comparison: gain over the item being replaced. Then check eligibility, lost passives, concentration and the best new owner for displaced gear.</li>
+<li>Durge wants finesse accuracy and caster utility; Minthara wants ranged accuracy; Shadowheart wants concentration and support; Lae'zel wants unarmed/DEX/WIS benefits. All four do not automatically want the same crit shard.</li>
+<li>The workshop covers the documented enchanting ladder and material tier conversions. Orbs and bespoke shard effects remain tooltip-verification decisions; no unverified capsule recipes are fabricated.</li>
+<li>Track one exact target batch at a time. Material totals and completed crafts are manual records, never automatically read from PS5.</li>
+</ul>
+<h2 id="session-rhythm-and-difficulty-calibration">Session rhythm and difficulty calibration</h2>
+<ul>
+<li>Start: read the next objective, confirm current levels, review unassigned loot and choose a concentration plan.</li>
+<li>After a difficult encounter: record control failures, damage type problems, concentration losses and resources used. One concise observation is enough.</li>
+<li>End: export a backup, write the next objective and record unresolved tooltips.</li>
+<li>After three representative encounters, adjust one difficulty setting if needed. A party that wins through consumable depletion and repeated downing is not ready for extra enemy actions merely because it survived.</li>
+</ul>
+<h2 id="launch-acceptance-checklist">Launch acceptance checklist</h2>
+<ul>
+<li>Four creation spreads cost 27; creation bonuses and every ASI match the intended observed scores.</li>
+<li>All 80 leveling rows are executable in the installed profile; no class exceeds 12.</li>
+<li>Fighter 11 allows three attacks per Attack action; Haste is not assumed to duplicate full Honour-mode attack chains.</li>
+<li>Monk control and chosen Fighter manoeuvres behave as described; weapon-only manoeuvres are not counted on punches.</li>
+<li>The total-level extension's multiclass slots load correctly and do not grant unlearned spells.</li>
+<li>AMP recipe/version checks pass for the actual target. No armour chest ladder, guaranteed randomized drop or invented shard is required.</li>
+<li>Astarion-to-Minthara handover and the chosen evil-route losses are understood.</li>
+</ul>
+<h2 id="what-this-package-is">What this package is</h2>
+<ul>
+<li>A complete campaign framework, 80-row character progression, compact combat plan and separate playable companion.</li>
+<li>It is not an exhaustive location-by-location completionist map, nor a claim of in-game validation. The launch checklist is the next test, not a formality.</li>
+</ul>
+<h1 id="the-last-laugh-party-engine">The Last Laugh - party engine</h1>
+<h2 id="the-win-condition">The win condition</h2>
+<ol>
+<li>Durge or Shadowheart disables or contains the dangerous group.</li>
+<li>Minthara removes the priority threat from range.</li>
+<li>Lae'zel disrupts the enemy that could still break the plan.</li>
+<li>Shadowheart preserves the party's ability to take another turn.</li>
+</ol>
+<h2 id="concentration-ownership">Concentration ownership</h2>
+<ul>
+<li>Durge: Hypnotic Pattern, Hold or Hunger of Hadar; choose one.</li>
+<li>Shadowheart: Bless, Spirit Guardians or terrain; choose one.</li>
+<li>Minthara: optional Hunter's Mark only when it does not crowd out a better bonus action.</li>
+<li>Lae'zel: no concentration dependency.</li>
+</ul>
+<h2 id="initiative-and-resource-tradeoffs">Initiative and resource tradeoffs</h2>
+<ul>
+<li>If the archer acts before control lands, shoot another dangerous target rather than pretending the planned combo already exists.</li>
+<li>Prone can hinder distant ranged attacks; select Stagger or another target when appropriate.</li>
+<li>Two short rests plus Song of Rest support Bard Inspiration, ki and Fighter resources. They do not replenish everything a long rest does.</li>
+<li>Durge has no Paladin 6 aura in this build. Defence comes from positioning, reactions and support, not an aura the split never reaches.</li>
+<li>Shadowheart's Starry Dragon form improves concentration rolls; large damage can still demand a roll it cannot guarantee.</li>
+</ul>
+<h2 id="opening-round">Opening round</h2>
+<ol>
+<li>Inspect the priority target.</li>
+<li>Pick one control plan, one damage target and one recovery owner.</li>
+<li>Commit burst only when it changes the next enemy turn.</li>
+<li>Keep a route out. If the opening fails, stabilize rather than chain every resource into the same bad assumption.</li>
+</ol>
+<h1 id="durge-the-fine-print-role-gish">Durge - "The Fine Print" · Role: Gish</h1>
+<h2 id="college-of-swords-bard-10-oathbreaker-paladin-2-draconic-sorcerer-8">College of Swords Bard 10 / Oathbreaker Paladin 2 / Draconic Sorcerer 8</h2>
+<p><strong>The pitch:</strong></p>
+<ul>
+<li>The face who negotiates the price, then collects it in smites. Bard control carries the early run; Paladin adds melee punishment and Sorcerer adds flexible resources.</li>
+<li>Rules-checked progression; installed PS5 behavior and total-level-20 slot progression still require the launch tests. No individual class exceeds 12.</li>
+</ul>
+<h2 id="race-deity-background">Race · Deity · Background</h2>
+<ul>
+<li>Race: Half-Drow. Existing companions keep their race and background.</li>
+<li>Durge keeps Haunted One; class skill choices do not replace background skills.</li>
+<li>Deity is flavour: select what the game offers.</li>
+</ul>
+<h2 id="stats-point-buy-27-str-8-dex-15-con-14-int-10-wis-10-cha-14">Stats (point buy 27): STR 8 · DEX 15 · CON 14 · INT 10 · WIS 10 · CHA 14</h2>
+<ul>
+<li>Creation bonuses: DEX +1 / CHA +2. These are before feats.</li>
+<li>No Hag’s Hair, Mirror bonus or permanent elixir supply is assumed.</li>
+</ul>
+<h2 id="level-path-follow-this-order-without-mandatory-respecs">Level path (follow this order without mandatory respecs)</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Char</th>
+<th>Take</th>
+<th>Picks / unlocks</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Bard 1</td>
+<td>Persuasion, Deception and Sleight of Hand; Healing Word, Dissonant Whispers, Faerie Fire, Longstrider; Friends is not a risk-free Honour dialogue tool.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bard 2</td>
+<td>Song of Rest; add Feather Fall for exploration.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bard 3</td>
+<td>Dueling style; expertise in Persuasion and Sleight of Hand; learn Hold Person. Use Defensive Flourish when threatened.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Bard 4</td>
+<td>ASI DEX +2: DEX 18. Add Enhance Ability.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bard 5</td>
+<td>Bardic Inspiration refreshes on short rest; learn Hypnotic Pattern.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Bard 6</td>
+<td>Extra Attack: two attacks per Attack action. Learn Glyph of Warding.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Bard 7</td>
+<td>Learn Dimension Door; mobility can save a run.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Bard 8</td>
+<td>ASI CHA +2: CHA 18. Add Greater Invisibility; do not assume invisibility defeats every detector.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Bard 9</td>
+<td>Learn Hold Monster. Check target immunity before spending the slot.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Bard 10</td>
+<td>Magical Secrets: Counterspell and Hunger of Hadar; second expertise in Deception and Perception.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Paladin 1</td>
+<td>Choose an available oath when adding Paladin; only mark Oathbreaker after an actual oath break. Smite plan does not require a specific oath power.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Paladin 2</td>
+<td>Divine Smite and Defence style. Set smite reactions to Ask; use higher slots only when the payoff matters.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Sorcerer 1</td>
+<td>White ancestry; learn Shield and Magic Missile. This late dip does not grant starting CON-save proficiency.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Sorcerer 2</td>
+<td>Metamagic: Extended and Distant; learn utility such as Feather Fall if Bard replaced it.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Sorcerer 3</td>
+<td>Add Quickened Spell and Mirror Image. Bonus-action competition matters.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Sorcerer 4</td>
+<td>ASI CHA +2: CHA 20. Learn Misty Step.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Sorcerer 5</td>
+<td>Learn Haste as an optional concentration alternative; do not run it alongside your own Hold spell.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Sorcerer 6</td>
+<td>Add a non-concentration damage option such as Fireball. This is utility/burst, not a dedicated elemental build.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Sorcerer 7</td>
+<td>Learn Dimension Door or another available utility spell to free a Bard choice.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Sorcerer 8</td>
+<td>War Caster. Keep the most useful prepared/known control and escape package after reviewing actual fights.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="spells-abilities-by-level">Spells &amp; abilities by level</h2>
+<ul>
+<li><strong>Control:</strong> Hold Person, Hypnotic Pattern, Hold Monster, Hunger of Hadar</li>
+<li><strong>Defence and mobility:</strong> Shield, Mirror Image, Misty Step, Dimension Door, Counterspell</li>
+<li><strong>Support:</strong> Healing Word, Longstrider</li>
+<li>
+<p><strong>Situational concentration:</strong> Haste, Bless</p>
+</li>
+<li>
+<p>Bard: Healing Word, Longstrider, Hold Person, Hypnotic Pattern, Glyph of Warding, Dimension Door, Hold Monster. Magical Secrets: Counterspell and Hunger of Hadar. Sorcerer: Shield, Magic Missile, Mirror Image, Misty Step; Haste is situational. Paladin: Bless or utility when control is unnecessary.</p>
+</li>
+<li>Available higher slots do not automatically teach higher-level spells. Learn and prepare according to each class level, and verify the extension’s multiclass slot table.</li>
+</ul>
+<h2 id="the-signature-loop-make-the-next-enemy-turn-worse">The signature loop (make the next enemy turn worse)</h2>
+<ol>
+<li>Check target saves and immunity before choosing control or damage.</li>
+<li>Control a dangerous group with Hypnotic Pattern, or isolate a lane with Hunger of Hadar. Keep allies outside it.</li>
+<li>On a disabled priority target, move into eligible melee range and use weapon attacks with Ask-mode smites.</li>
+<li>Use Counterspell for a spell that threatens the fight; it competes with Shield for your reaction.</li>
+</ol>
+<h2 id="how-it-plays">How it plays</h2>
+<ul>
+<li>Act 1: secure the primary class engine before dipping; prefer manageable encounters and exploration to early boss gambles.</li>
+<li>Act 2: keep your concentration assignment and escape route explicit; compare actual upgrades after each reward.</li>
+<li>Act 3: complete the remaining levels when earned, use a compact boss plan, and stop treating every optional encounter as mandatory.</li>
+</ul>
+<h2 id="amp-gearing">AMP / gearing</h2>
+<ul>
+<li>A finesse weapon, shield and suitable medium armour are enough. Prioritize DEX/attack accuracy first, then CHA/spell DC, concentration protection and initiative. No mandatory named drop. Smite is the class engine; there is no required invented smite shard.</li>
+<li>Orb theme to inspect: Agate (War); select the actual branch by tooltip, not name alone.</li>
+<li>Steadfast and any other shard must be confirmed in your installed version. No invented damage, spell-DC or healing shards.</li>
+<li>Use the workshop to budget verified eligible-item upgrades. Body armour is outside this ladder.</li>
+</ul>
+<h2 id="combat-playbook-by-bracket">Combat playbook by bracket</h2>
+<ul>
+<li><strong>Levels 1–5:</strong> use your core class actions and prioritize survival. Follow the level table for unlock timing.</li>
+<li><strong>Levels 6–10:</strong> use the signature loop, short-rest resources and the first control/attack breakpoints.</li>
+<li><strong>Levels 11–15:</strong> finish the primary engine; incorporate a new class only when its listed step arrives.</li>
+<li><strong>Levels 16–20:</strong> apply the final resource and feat upgrades; verify every total-level extension step at the Training Ring.</li>
+</ul>
+<h2 id="build-log">Build log</h2>
+<ul>
+<li>September 5, 2026: generated as a reviewed test-run variant. 20 ordered rows, class counts and point buy validated. In-game test pending.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>https://bg3.wiki/wiki/Bard</li>
+<li>https://bg3.wiki/wiki/College_of_Swords</li>
+<li>https://bg3.wiki/wiki/Paladin</li>
+<li>https://bg3.wiki/wiki/Oathbreaker</li>
+<li>https://bg3.wiki/wiki/Sorcerer</li>
+<li>https://bg3.wiki/wiki/Draconic_Bloodline</li>
+<li>https://bg3.wiki/wiki/Magical_Secrets</li>
+</ul>
+<h1 id="minthara-hostile-takeover-role-ranged">Minthara - "Hostile Takeover" · Role: Ranged</h1>
+<h2 id="battle-master-fighter-12-thief-rogue-4-gloom-stalker-ranger-4">Battle Master Fighter 12 / Thief Rogue 4 / Gloom Stalker Ranger 4</h2>
+<p><strong>The pitch:</strong></p>
+<ul>
+<li>The commander with a firing solution. Reliable ranged pressure, manoeuvres and an opening ambush, with no dependence on surprise working against every boss.</li>
+<li>Rules-checked progression; installed PS5 behavior and total-level-20 slot progression still require the launch tests. No individual class exceeds 12.</li>
+</ul>
+<h2 id="race-deity-background_1">Race · Deity · Background</h2>
+<ul>
+<li>Race: Lolth-Sworn Drow. Existing companions keep their race and background.</li>
+<li>Durge keeps Haunted One; class skill choices do not replace background skills.</li>
+<li>Deity is flavour: select what the game offers.</li>
+</ul>
+<h2 id="stats-point-buy-27-str-10-dex-15-con-14-int-8-wis-14-cha-10">Stats (point buy 27): STR 10 · DEX 15 · CON 14 · INT 8 · WIS 14 · CHA 10</h2>
+<ul>
+<li>Creation bonuses: DEX +2 / CON +1. These are before feats.</li>
+<li>No Hag’s Hair, Mirror bonus or permanent elixir supply is assumed.</li>
+</ul>
+<h2 id="level-path-follow-this-order-without-mandatory-respecs_1">Level path (follow this order without mandatory respecs)</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Char</th>
+<th>Take</th>
+<th>Picks / unlocks</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Fighter 1</td>
+<td>Archery style and Second Wind. Use an available bow; do not postpone the build for named crossbows.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fighter 2</td>
+<td>Action Surge; save it for removing a dangerous enemy or recovering tempo.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Fighter 3</td>
+<td>Precision Attack, Menacing Attack and Disarming Attack. Examine target immunities.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fighter 4</td>
+<td>ASI DEX +1 / CON +1: DEX 18, CON 16.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Fighter 5</td>
+<td>Extra Attack. Two ranged attacks per Attack action.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Fighter 6</td>
+<td>Sharpshooter. Toggle the damage option off when accuracy is poor.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Fighter 7</td>
+<td>Add Pushing Attack and Trip Attack; avoid toppling distant targets before ranged follow-up.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Fighter 8</td>
+<td>ASI DEX +2: DEX 20.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Fighter 9</td>
+<td>Indomitable; a recovery resource, not guaranteed immunity.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Fighter 10</td>
+<td>Improve the manoeuvre toolkit; add Rally and another option available on the level-up screen.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Fighter 11</td>
+<td>Improved Extra Attack: three attacks per Attack action.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Fighter 12</td>
+<td>Alert. You now have the complete Fighter foundation.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Rogue 1</td>
+<td>Sneak Attack only with eligible attacks; expertise in Sleight of Hand and Perception.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Rogue 2</td>
+<td>Cunning Action: reposition without spending the main action.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Rogue 3</td>
+<td>Fast Hands: another bonus action. Spend it on mobility, consumables or off-hand shots if using hand crossbows.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Rogue 4</td>
+<td>Resilient WIS: WIS 15 plus saving-throw proficiency; the odd score is intentional.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Ranger 1</td>
+<td>Choose preferred utility enemy/explorer proficiencies; avoid duplicating existing ones unnecessarily.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Ranger 2</td>
+<td>Defence style; Longstrider and an available utility spell. Hunter's Mark is optional and competes for the bonus action/concentration.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Ranger 3</td>
+<td>Dread Ambusher opening attack and initiative bonus. It is not an extra full Attack action.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Ranger 4</td>
+<td>ASI WIS +1 / INT +1: WIS 16, INT 9. The WIS increase improves saves and perception; do not change the tested DEX base for spellcasting.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="spells-abilities-by-level_1">Spells &amp; abilities by level</h2>
+<ul>
+<li><strong>Manoeuvres:</strong> Precision Attack, Menacing Attack, Disarming Attack, Pushing Attack</li>
+<li>
+<p><strong>Ranger utility:</strong> Longstrider, Hunter's Mark (optional)</p>
+</li>
+<li>
+<p>Ranger utility: Longstrider and an available exploration choice. Hunter’s Mark is optional. Manoeuvres are the main active toolkit: Precision, Menacing, Disarming and Pushing attacks. Sneak Attack remains once per turn when eligible.</p>
+</li>
+<li>Available higher slots do not automatically teach higher-level spells. Learn and prepare according to each class level, and verify the extension’s multiclass slot table.</li>
+</ul>
+<h2 id="the-signature-loop-make-the-next-enemy-turn-worse_1">The signature loop (make the next enemy turn worse)</h2>
+<ol>
+<li>Start with high ground, an escape route and a clear target. Do not split the party across an encounter trigger.</li>
+<li>Use Precision Attack when it rescues a valuable shot; disable Sharpshooter when its accuracy tradeoff is bad.</li>
+<li>Remove an enemy caster or ranged threat before spreading damage. Spend Action Surge when it prevents an enemy turn.</li>
+<li>Keep a bonus action available for healing, repositioning or escape; an off-hand shot is optional.</li>
+</ol>
+<h2 id="how-it-plays_1">How it plays</h2>
+<ul>
+<li>Act 1: secure the primary class engine before dipping; prefer manageable encounters and exploration to early boss gambles.</li>
+<li>Act 2: keep your concentration assignment and escape route explicit; compare actual upgrades after each reward.</li>
+<li>Act 3: complete the remaining levels when earned, use a compact boss plan, and stop treating every optional encounter as mandatory.</li>
+</ul>
+<h2 id="amp-gearing_1">AMP / gearing</h2>
+<ul>
+<li>Prioritize bow enchantment, attack accuracy, DEX and initiative. A longbow works throughout; hand crossbows are a playstyle variant, not a shopping dependency. Arrow consumables are valuable but never assumed infinite.</li>
+<li>Orb theme to inspect: Agate (War); select the actual branch by tooltip, not name alone.</li>
+<li>Steadfast and any other shard must be confirmed in your installed version. No invented damage, spell-DC or healing shards.</li>
+<li>Use the workshop to budget verified eligible-item upgrades. Body armour is outside this ladder.</li>
+</ul>
+<h2 id="combat-playbook-by-bracket_1">Combat playbook by bracket</h2>
+<ul>
+<li><strong>Levels 1–5:</strong> use your core class actions and prioritize survival. Follow the level table for unlock timing.</li>
+<li><strong>Levels 6–10:</strong> use the signature loop, short-rest resources and the first control/attack breakpoints.</li>
+<li><strong>Levels 11–15:</strong> finish the primary engine; incorporate a new class only when its listed step arrives.</li>
+<li><strong>Levels 16–20:</strong> apply the final resource and feat upgrades; verify every total-level extension step at the Training Ring.</li>
+</ul>
+<h2 id="build-log_1">Build log</h2>
+<ul>
+<li>September 5, 2026: generated as a reviewed test-run variant. 20 ordered rows, class counts and point buy validated. In-game test pending.</li>
+</ul>
+<h2 id="sources_1">Sources</h2>
+<ul>
+<li>https://bg3.wiki/wiki/Fighter</li>
+<li>https://bg3.wiki/wiki/Battle_Master</li>
+<li>https://bg3.wiki/wiki/Rogue</li>
+<li>https://bg3.wiki/wiki/Thief</li>
+<li>https://bg3.wiki/wiki/Ranger</li>
+<li>https://bg3.wiki/wiki/Gloom_Stalker</li>
+<li>https://bg3.wiki/wiki/Sharpshooter</li>
+</ul>
+<h1 id="shadowheart-final-notice-role-support">Shadowheart - "Final Notice" · Role: Support</h1>
+<h2 id="light-cleric-12-circle-of-stars-druid-8">Light Cleric 12 / Circle of Stars Druid 8</h2>
+<p><strong>The pitch:</strong></p>
+<ul>
+<li>A harsh light with a recovery plan. She handles group pressure, saves allies with reactions and sustains the party while the others remove priority targets.</li>
+<li>Rules-checked progression; installed PS5 behavior and total-level-20 slot progression still require the launch tests. No individual class exceeds 12.</li>
+</ul>
+<h2 id="race-deity-background_2">Race · Deity · Background</h2>
+<ul>
+<li>Race: High Half-Elf. Existing companions keep their race and background.</li>
+<li>Durge keeps Haunted One; class skill choices do not replace background skills.</li>
+<li>Deity is flavour: select what the game offers.</li>
+</ul>
+<h2 id="stats-point-buy-27-str-8-dex-14-con-14-int-10-wis-15-cha-10">Stats (point buy 27): STR 8 · DEX 14 · CON 14 · INT 10 · WIS 15 · CHA 10</h2>
+<ul>
+<li>Creation bonuses: WIS +2 / CON +1. These are before feats.</li>
+<li>No Hag’s Hair, Mirror bonus or permanent elixir supply is assumed.</li>
+</ul>
+<h2 id="level-path-follow-this-order-without-mandatory-respecs_2">Level path (follow this order without mandatory respecs)</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Char</th>
+<th>Take</th>
+<th>Picks / unlocks</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Cleric 1</td>
+<td>Guidance, Sacred Flame; prepare Healing Word, Bless and Sanctuary. Warding Flare protects against eligible attacks.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cleric 2</td>
+<td>Radiance of the Dawn. Use area damage when it safely hits several threats.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Cleric 3</td>
+<td>Aid and Lesser Restoration. Preserve a way to recover an ally.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Cleric 4</td>
+<td>ASI WIS +1 / CON +1: WIS 18, CON 16.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Cleric 5</td>
+<td>Spirit Guardians and Revivify; domain Fireball is an alternative to walking into danger.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Cleric 6</td>
+<td>Improved Warding Flare protects nearby allies. Keep the reaction prompt visible.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Cleric 7</td>
+<td>Freedom of Movement and Death Ward become useful preparation choices.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Cleric 8</td>
+<td>ASI WIS +2: WIS 20.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Cleric 9</td>
+<td>Prepare a situational level-5 option such as Greater Restoration or Mass Cure Wounds.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Cleric 10</td>
+<td>Divine Intervention is a limited campaign resource; decide deliberately when to spend it.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Cleric 11</td>
+<td>Heal and Heroes’ Feast when available. Plan preparation and rests before major commitments.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Cleric 12</td>
+<td>War Caster. Complete Cleric progression before adding a second spell list.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Druid 1</td>
+<td>Prepare utility and terrain options. Druid spells still use WIS.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Druid 2</td>
+<td>Dragon form helps concentration; it does not make high-damage concentration checks impossible to fail.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Druid 3</td>
+<td>Spike Growth is a concentration alternative for a choke point, not a second simultaneous zone.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Druid 4</td>
+<td>Alert. Choose who needs to act before the enemy burst.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Druid 5</td>
+<td>Plant Growth is a useful terrain option; read movement and concentration tooltips for the installed version.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Druid 6</td>
+<td>Cosmic Omen adds another reaction choice. Prioritize it against a decisive save or attack.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Druid 7</td>
+<td>Add utility from available fourth-level Druid spells. No second summoner engine is required.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Druid 8</td>
+<td>ASI CON +2: CON 18. Finalize a compact preparation list instead of filling every turn with options.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="spells-abilities-by-level_2">Spells &amp; abilities by level</h2>
+<ul>
+<li><strong>Core support:</strong> Healing Word, Bless, Sanctuary, Aid, Lesser Restoration, Revivify</li>
+<li><strong>Area pressure:</strong> Spirit Guardians, Fireball</li>
+<li><strong>Later preparation:</strong> Death Ward, Freedom of Movement, Heal, Heroes' Feast</li>
+<li>
+<p><strong>Druid alternatives:</strong> Spike Growth, Plant Growth</p>
+</li>
+<li>
+<p>Core: Healing Word, Bless, Sanctuary, Aid, Lesser Restoration, Spirit Guardians, Revivify. Later: Death Ward, Freedom of Movement, Heal and Heroes’ Feast. Druid adds utility and alternate terrain plans. Always choose one concentration plan.</p>
+</li>
+<li>Available higher slots do not automatically teach higher-level spells. Learn and prepare according to each class level, and verify the extension’s multiclass slot table.</li>
+</ul>
+<h2 id="the-signature-loop-make-the-next-enemy-turn-worse_2">The signature loop (make the next enemy turn worse)</h2>
+<ol>
+<li>If the party needs protection, choose Bless; if enemies can be safely approached, choose Spirit Guardians. These compete for concentration.</li>
+<li>Use terrain and a shield to avoid being surrounded. Do not walk into lethal melee merely to touch one more target with an aura.</li>
+<li>Use Healing Word to recover an ally when useful, while reserving the action for control, damage or a stronger heal.</li>
+<li>After Stars arrives, choose the form for the fight and reserve the reaction for Warding Flare or a decisive Omen.</li>
+</ol>
+<h2 id="how-it-plays_2">How it plays</h2>
+<ul>
+<li>Act 1: secure the primary class engine before dipping; prefer manageable encounters and exploration to early boss gambles.</li>
+<li>Act 2: keep your concentration assignment and escape route explicit; compare actual upgrades after each reward.</li>
+<li>Act 3: complete the remaining levels when earned, use a compact boss plan, and stop treating every optional encounter as mandatory.</li>
+</ul>
+<h2 id="amp-gearing_2">AMP / gearing</h2>
+<ul>
+<li>Medium armour and shield; prioritize WIS/DC, concentration protection, initiative and useful defensive passives. Radiant Orb is an item-applied condition, not an automatic benefit of all radiant damage or an AMP Pearl orb. Confirm the exact item trigger.</li>
+<li>Orb theme to inspect: Pearl (Light); select the actual branch by tooltip, not name alone.</li>
+<li>Steadfast and any other shard must be confirmed in your installed version. No invented damage, spell-DC or healing shards.</li>
+<li>Use the workshop to budget verified eligible-item upgrades. Body armour is outside this ladder.</li>
+</ul>
+<h2 id="combat-playbook-by-bracket_2">Combat playbook by bracket</h2>
+<ul>
+<li><strong>Levels 1–5:</strong> use your core class actions and prioritize survival. Follow the level table for unlock timing.</li>
+<li><strong>Levels 6–10:</strong> use the signature loop, short-rest resources and the first control/attack breakpoints.</li>
+<li><strong>Levels 11–15:</strong> finish the primary engine; incorporate a new class only when its listed step arrives.</li>
+<li><strong>Levels 16–20:</strong> apply the final resource and feat upgrades; verify every total-level extension step at the Training Ring.</li>
+</ul>
+<h2 id="build-log_2">Build log</h2>
+<ul>
+<li>September 5, 2026: generated as a reviewed test-run variant. 20 ordered rows, class counts and point buy validated. In-game test pending.</li>
+</ul>
+<h2 id="sources_2">Sources</h2>
+<ul>
+<li>https://bg3.wiki/wiki/Cleric</li>
+<li>https://bg3.wiki/wiki/Light_Domain</li>
+<li>https://bg3.wiki/wiki/Druid</li>
+<li>https://bg3.wiki/wiki/Circle_of_the_Stars</li>
+<li>https://bg3.wiki/wiki/Spirit_Guardians</li>
+</ul>
+<h1 id="laezel-the-exit-interview-role-frontline">Lae'zel - "The Exit Interview" · Role: Frontline</h1>
+<h2 id="open-hand-monk-12-thief-rogue-4-battle-master-fighter-4">Open Hand Monk 12 / Thief Rogue 4 / Battle Master Fighter 4</h2>
+<p><strong>The pitch:</strong></p>
+<ul>
+<li>The person security calls when the meeting is over. A DEX/WIS unarmed controller, built to work without a daily supply of Strength elixirs.</li>
+<li>Rules-checked progression; installed PS5 behavior and total-level-20 slot progression still require the launch tests. No individual class exceeds 12.</li>
+</ul>
+<h2 id="race-deity-background_3">Race · Deity · Background</h2>
+<ul>
+<li>Race: Githyanki. Existing companions keep their race and background.</li>
+<li>Durge keeps Haunted One; class skill choices do not replace background skills.</li>
+<li>Deity is flavour: select what the game offers.</li>
+</ul>
+<h2 id="stats-point-buy-27-str-8-dex-15-con-14-int-10-wis-15-cha-8">Stats (point buy 27): STR 8 · DEX 15 · CON 14 · INT 10 · WIS 15 · CHA 8</h2>
+<ul>
+<li>Creation bonuses: DEX +2 / WIS +1. These are before feats.</li>
+<li>No Hag’s Hair, Mirror bonus or permanent elixir supply is assumed.</li>
+</ul>
+<h2 id="level-path-follow-this-order-without-mandatory-respecs_3">Level path (follow this order without mandatory respecs)</h2>
+<div class="scroll"><table>
+<thead>
+<tr>
+<th>Char</th>
+<th>Take</th>
+<th>Picks / unlocks</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Monk 1</td>
+<td>Use clothing and no shield for the planned unarmoured benefits. DEX-based attacks; use a quarterstaff until unarmed tools improve.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Monk 2</td>
+<td>Ki: Flurry, Patient Defence and Step of the Wind. Save enough ki to escape.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Monk 3</td>
+<td>Topple, Stagger and Push give the bonus action a control job.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Monk 4</td>
+<td>ASI DEX +1 / CON +1: DEX 18, CON 15.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Monk 5</td>
+<td>Extra Attack and Stunning Strike. Check the enemy CON save before burning ki repeatedly.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Monk 6</td>
+<td>Manifestation and Wholeness of Body. Choose a damage type the target does not resist.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Rogue 1</td>
+<td>Expertise in Perception and Athletics. Unarmed hits do not become Sneak Attacks.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Rogue 2</td>
+<td>Cunning Action helps preserve actions and ki when repositioning.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Rogue 3</td>
+<td>Fast Hands allows a second bonus action; two Flurries cost resources, not just button presses.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Rogue 4</td>
+<td>ASI DEX +2: DEX 20.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Monk 7</td>
+<td>Monk 7: Evasion and Stillness of Mind. Keep saving throws and positioning relevant.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Monk 8</td>
+<td>Monk 8: ASI WIS +2, WIS 18.</td>
+<td>Base Patch 8 class progression.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Monk 9</td>
+<td>Monk 9: Ki Resonation. Use it when nearby enemies justify the setup.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Monk 10</td>
+<td>Monk 10 defensive progression; check the installed tooltips and keep the control loop simple.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Monk 11</td>
+<td>Monk 11: Tranquillity is opening protection, not permission to ignore aggro after attacking.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Monk 12</td>
+<td>Monk 12: ASI WIS +2, WIS 20.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Fighter 1</td>
+<td>Second Wind; choose a situational fighting style. Do not wear armour solely to activate Defence and accidentally disable monk benefits.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Fighter 2</td>
+<td>Action Surge adds an action; it does not restore ki or bonus actions.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>Fighter 3</td>
+<td>Choose Rally, Evasive Footwork and a weapon manoeuvre for an equipped fallback. Do not assume weapon-only manoeuvres work with unarmed strikes.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Fighter 4</td>
+<td>Resilient CON: CON 16 and CON-save proficiency. This is defence, not a spellcasting requirement.</td>
+<td>Verify total-level extension; class feature remains within level 12.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="spells-abilities-by-level_3">Spells &amp; abilities by level</h2>
+<ul>
+<li><strong>Monk toolkit:</strong> Stunning Strike, Flurry of Blows, Patient Defence, Step of the Wind, Wholeness of Body</li>
+<li>
+<p><strong>Supplementary tools:</strong> Second Wind, Action Surge, Rally</p>
+</li>
+<li>
+<p>No spellcasting required. Core buttons: unarmed attacks, Stunning Strike, Flurry variants, Patient Defence, Step of the Wind and Wholeness of Body. The Fighter manoeuvre package is supplementary; unarmed control comes from Monk.</p>
+</li>
+<li>Available higher slots do not automatically teach higher-level spells. Learn and prepare according to each class level, and verify the extension’s multiclass slot table.</li>
+</ul>
+<h2 id="the-signature-loop-make-the-next-enemy-turn-worse_3">The signature loop (make the next enemy turn worse)</h2>
+<ol>
+<li>Identify the enemy whose next turn is most dangerous and reach it without stranding yourself.</li>
+<li>Use Stagger to remove reactions or Topple when it helps close-range allies; distant archers can dislike prone targets.</li>
+<li>Spend Stunning Strike selectively, then Flurry to finish or control. Do not exhaust ki merely because two bonus actions are available.</li>
+<li>Retain movement or a bonus action for escape. Short-rest ki recovery and Song of Rest support the next encounter.</li>
+</ol>
+<h2 id="how-it-plays_3">How it plays</h2>
+<ul>
+<li>Act 1: secure the primary class engine before dipping; prefer manageable encounters and exploration to early boss gambles.</li>
+<li>Act 2: keep your concentration assignment and escape route explicit; compare actual upgrades after each reward.</li>
+<li>Act 3: complete the remaining levels when earned, use a compact boss plan, and stop treating every optional encounter as mandatory.</li>
+</ul>
+<h2 id="amp-gearing_3">AMP / gearing</h2>
+<ul>
+<li>Clothing, no shield, and unarmed-friendly bonuses. DEX/WIS, accuracy, movement and defensive saves matter. Do not choose Tavern Brawler on this STR 8 plan. A Strength-based variant would need its own sustainable ability plan, not assumed infinite elixirs.</li>
+<li>Orb theme to inspect: Agate (War); select the actual branch by tooltip, not name alone.</li>
+<li>Steadfast and any other shard must be confirmed in your installed version. No invented damage, spell-DC or healing shards.</li>
+<li>Use the workshop to budget verified eligible-item upgrades. Body armour is outside this ladder.</li>
+</ul>
+<h2 id="combat-playbook-by-bracket_3">Combat playbook by bracket</h2>
+<ul>
+<li><strong>Levels 1–5:</strong> use your core class actions and prioritize survival. Follow the level table for unlock timing.</li>
+<li><strong>Levels 6–10:</strong> use the signature loop, short-rest resources and the first control/attack breakpoints.</li>
+<li><strong>Levels 11–15:</strong> finish the primary engine; incorporate a new class only when its listed step arrives.</li>
+<li><strong>Levels 16–20:</strong> apply the final resource and feat upgrades; verify every total-level extension step at the Training Ring.</li>
+</ul>
+<h2 id="build-log_3">Build log</h2>
+<ul>
+<li>September 5, 2026: generated as a reviewed test-run variant. 20 ordered rows, class counts and point buy validated. In-game test pending.</li>
+</ul>
+<h2 id="sources_3">Sources</h2>
+<ul>
+<li>https://bg3.wiki/wiki/Monk</li>
+<li>https://bg3.wiki/wiki/Way_of_the_Open_Hand</li>
+<li>https://bg3.wiki/wiki/Thief</li>
+<li>https://bg3.wiki/wiki/Fighter</li>
+<li>https://bg3.wiki/wiki/Battle_Master</li>
+</ul></main></html>

@@ -1,16 +1,12 @@
-# BG3 Party Randomizer and companion
+# BG3 Party Randomizer and companions
 
-- [Party randomizer](https://phyxd.github.io/bg3-party-randomizer/)
-- [Bhaal Till You Fall companion](https://phyxd.github.io/bg3-party-randomizer/companion/)
-- [Printable party guide](https://phyxd.github.io/bg3-party-randomizer/companion/party-guide.html)
+- [Bhaal Till You Fall](https://phyxd.github.io/bg3-party-randomizer/companion/)
+- [The Last Laugh companion](https://phyxd.github.io/bg3-party-randomizer/last-laugh/)
+- [The Last Laugh full playthrough](https://phyxd.github.io/bg3-party-randomizer/last-laugh/Full-Playthrough.html)
+- [Randomizer](https://phyxd.github.io/bg3-party-randomizer/)
 
-Companion UI release 3.0.0, September 5, 2026. This repository contains generated deployment assets. The source project remains the local Baldur's Gate project; regenerate assets from the canonical guides and app sources before replacing them here.
+Release 3.1.0: marginal-upgrade loot comparisons, supported-slot/base-armour checks, a version-confirmed AMP materials workshop, corrected build prose, canonical entry generation and four new rules-checked playthrough variants. There are 206 catalog concepts; most are legacy concepts, not in-game-verified builds.
 
-The release passed 39 local automated tests, point-buy checks for 202 builds, desktop/mobile browser checks, import recovery, offline reload and exact item variant selection. That validates application behavior, not every BG3 mod mechanic.
+The Last Laugh is a curated four-seat test run with 80 leveling rows and an Act 1–3 campaign plan. It uses a separate browser save key and service-worker cache. Existing Bhaal progress is retained. Export JSON on Save to back up each run; devices do not sync automatically.
 
-Browser data is local to each device and origin. Export JSON in Save before moving between files, URLs or devices. Import it in the hosted companion. Open online once to initialize offline support; browser caches are not backups. Exact installed PS5 mods and mechanics still need in-game verification.
-
-GitHub Pages deploys main from the repository root. Keep companion/index.html, manifest.webmanifest and sw.js together. The service worker is scoped to the companion folder.
-
-The 3.0.0 interface adds a session-focused Camp, character workspaces, current-level combat guidance, searchable Armory, streamlined Loot, chapter navigation and a dedicated Save screen. Desktop sidebar and phone bottom navigation share the same saved-data format as 2.2.0. Browser checks cover all six sections at phone and tablet widths, desktop editing, draft/filter retention, import validation and offline reload.
-
+Only generated site assets are hosted. Raw mod extraction, the research database and the supplied AMP guidebook remain local. Source project: the local Baldur's Gate project. Publish each run's index, manifest and service-worker together. GitHub Pages serves main from root.

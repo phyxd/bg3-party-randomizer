@@ -1,0 +1,9 @@
+{
+  "name": "The Last Laugh",
+  "short_name": "Last Laugh",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0f1e",
+  "theme_color": "#0b0f1e"
+}
